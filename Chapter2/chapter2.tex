@@ -166,7 +166,6 @@ It holds:
 \end{equation}
 
 \begin{table}%[tb!]
-	\label{tab:queuingmodel}
 	\footnotesize 
 	\centering
 	\resizebox{0.6\textwidth}{!}{
@@ -189,6 +188,7 @@ It holds:
 	\end{tabular}
 }
 	\caption{Variables of the model.}
+		\label{tab:queuingmodel}
 \end{table}
 
 Summarizing, it was possible to write down all arrival rates $\lambda_{i}$ and all draining rate $\mu_i$ as function of the flow size distribution and the set of thresholds $\alpha_i$. A summary of all quantities that have been defined is provided in Table \ref{tab:queuingmodel}.
@@ -225,10 +225,7 @@ Hence, it is possible to solve in $\theta_i$.
 
 \subsection{Greedy threshold assignment}
 \label{sec:greedy-thresh}
-In order to verify the actual gain obtained with optimal demotion levels, it is practical to compare it against simpler greedy strategies for thresholds assignment. Another reason motivating such alternatives is that when the number of priority levels increases ($N$>3) the solution to the previous optimization is very time consuming, since the problem is non-linear and non-convex. In chapter \ref{ch4} it is provided a breakdown which shows the CPU time spent for computing the optimal demotion thresholds through a meta-heuristic algorithm. 
-Having a significant slow-down for the solution to converge deteriorates the reactiveness of the MLFQ scheduler in the case of a sudden change in the flow size distribution. As a consequence, the system would operate for long using thresholds mismatched with respect to the flow distribution.
-
-Two intuitive approach are considered for fast threshold computation: Equal Split (ES) and Load Split (LS). 
+In order to verify the actual gain obtained with optimal demotion levels, it is practical to compare it against simpler greedy strategies for thresholds assignment. Two intuitive approach are considered for fast threshold computation: Equal Split (ES) and Load Split (LS). 
 %Therefore, for initial tests, it has been more practical to use a simpler criterion: assign thresholds so that the traffic load is equally distributed among available queues. \\
 
 \subsubsection{Equal Split (ES-N)}
@@ -287,35 +284,3 @@ In fact, also in this case it holds $\sum_{i=1}^{N}\mathbb{E}[L_i] = \mathbb{E}[
 \end{align*}
 \normalsize
 \end{proof}
-
-\section{A priority scheme with spatial-diversity}
-
-\subsection{MLFQ with Spatial-Diversity}
-In this chapter have been presented two attempts to approximate the optimal LAS and SRPT schedulers leveraging multiple priority queues, that are already present in all datacenter equipments. However, one limitation of this approach remains the scarce availability of priority queues in commodity switches. A large number of priority levels is demanded to better approximate the reference scheduling disciplines, in which $N \rightarrow \infty$ (Sec. \ref{sec:las}). Unfortunately, devices in modern DCNs are usually equipped with no more than 8 priority queues per port, whose majority are reserved for other purposes, like isolating different types of traffic. Indeed, several transport protocols may coexist in the same network, without necessarily being designed to be fair among them. Example of such transports are RDMA \cite{rdma}, DCTCP \cite{dctcp}, standard TCP and UDP. For this reason, it is plausible to assume to have at most $N=2$ priority queues as a realistic case. \\
-Upon this understanding, the main proposal of this work is to evaluate the possibility to exploit the high degree of spatial diversity typically offered by DCN topologies to improve flow scheduling. Large DCN topologies are multilayer recursive Clos networks which offer a variety of equal-cost paths between racks. Precisely, in the simplest 2-layer Fat-Tree there are a number of paths proportional to the number of spines $K$ (Sec. \ref{sec:topology}). The key observation is that much like priority queues, different paths yet are a way for separating flows. In other words, the mechanism of priority demotion which shift the long flows across priority queues of a single interface, could be potentially applied at higher level as routing strategy over the switching fabric. Elephant flows would be physically segregated from mice flows, as they would be moved to different paths inside the switching fabric. Despite its simplicity, relevant works exploring this solution in the field of datacenter networks seem to be lacking. In more details, this contribution aims to integrate the spatial diversity property with the MLFQ scheduler. Consider a Leaf-Spine topology and focus on a single ToR switch. The interfaces from such a ToR towards all spines can be seen jointly as a unique big interface with $K$ times more priority queues than a port alone. The idea is better clarified in Fig.\ref{fig:sd-key-idea}.
-\begin{figure}
-	\centering
-	\begin{subfigure}[htpb]{0.3\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Chapter2/Figures/mlfq}
-		\caption{MLFQ}
-		\label{fig:sd-key-idea-mlfq}
-	\end{subfigure}
-	\hspace{0.2\textwidth}%
-	\begin{subfigure}[htpb]{0.3\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Chapter2/Figures/sdmlfq}
-		\caption{SD-MLFQ}
-		\label{fig:sd-key-idea-sdmlfq}
-	\end{subfigure}
-	\caption{Extension for spatial diversity.} %Red arrows indicate how queues are traversed during flow demotion. On each switch is reported the number of priorities it handles. Color scale is used to emphasize priority levels.}
-	\label{fig:sd-key-idea}
-\end{figure}
-%Differently from 
-The basic MLFQ (Fig.\ref{fig:sd-key-idea-mlfq}) focuses on the links individually and thanks to demotion moves flows, during their lifetime, across priority queues. Therefore, every interface handle the same priorities and flows are load balanced on different links independently from the prioritization mechanism. A standard technique for load balancing at flow-level is ECMP, which derives the next hop from the transport-layer tuple \texttt{\{IP ADDRESSES, PORTS, PROTOCOL ID\}}. Instead, this novel approach takes advantage of spatial diversity to extend the number of demotion levels beyond the limitation imposed by the PQs on a single interface. Interfaces from any ToR to the connected spines are virtually aggregated to offer a wider range of demotion levels. One new aspect of Spatially-Diverse MLFQ (SD-MLFQ) is that a demotion could imply to shift a flow from one path to another of equal-cost. In that light, the routing --- thus load balancing --- of flows on the Fat-Tree does depend on the priority. The spines can be seen as if they have a priority and a flow is moved both across queues and spines, effectively allowing a global resource exploitation for the demotion scheme. In other words, the routing policy over the fabric is not blind to the prioritization machinery, but smartly driven by the latter.  \\
-A clear benefit of this scheme is that finer granularity in priorities is achieved even with few queues per port, at the price of a very limited implementation complexity.
-
-\subsection{A queueing model extension for spatial-diversity}
-\label{sec:complete-model}
-PIAS model with added dimension for spatial diversity.
-Proportional and equal splits for spatial diversiy
