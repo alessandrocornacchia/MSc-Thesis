@@ -17,9 +17,10 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Workload properties\relax }}{30}{figure.caption.22}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Web search workload. Simple case of $K$=2.\relax }}{33}{figure.caption.23}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Data mining workload. Simple case of $K$=2.\relax }}{33}{figure.caption.24}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Web Search workload\relax }}{35}{figure.caption.27}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Data Mining workload\relax }}{35}{figure.caption.28}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Web Search workload and FIFO discipline at 99\% confidence interval.\relax }}{38}{figure.caption.30}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Web Search workload and PS discipline at 99\% confidence interval. \leavevmode {\color {red}GRAFICI MANCANTI MA SIMULAZIONI GERMAN CON QUELLO SCENARIO GIA FATTE MA USATE NEI GRAFICI FINALI. CHIEDERE GRAFICO A PARTE SE UTILE}\relax }}{38}{figure.caption.31}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Web search workload and PS discipline at 99\% confidence interval\relax }}{40}{figure.caption.32}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces M/M/1 response time\relax }}{34}{figure.caption.26}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Web Search workload\relax }}{35}{figure.caption.28}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Data Mining workload\relax }}{36}{figure.caption.29}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Web Search workload and FIFO discipline at 99\% confidence interval.\relax }}{38}{figure.caption.31}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Web Search workload and PS discipline at 99\% confidence interval. \leavevmode {\color {red}GRAFICI MANCANTI MA SIMULAZIONI GERMAN CON QUELLO SCENARIO GIA FATTE MA USATE NEI GRAFICI FINALI. CHIEDERE GRAFICO A PARTE SE UTILE}\relax }}{39}{figure.caption.32}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Web search workload and PS discipline at 99\% confidence interval\relax }}{40}{figure.caption.33}
 \addvspace {10\p@ }
