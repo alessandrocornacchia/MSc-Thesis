@@ -21,6 +21,7 @@
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Web Search workload\relax }}{35}{figure.caption.28}
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Data Mining workload\relax }}{36}{figure.caption.29}
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Web Search workload and FIFO discipline at 99\% confidence interval.\relax }}{38}{figure.caption.31}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Web Search workload and PS discipline at 99\% confidence interval. \leavevmode {\color {red}GRAFICI MANCANTI MA SIMULAZIONI GERMAN CON QUELLO SCENARIO GIA FATTE MA USATE NEI GRAFICI FINALI. CHIEDERE GRAFICO A PARTE SE UTILE}\relax }}{39}{figure.caption.32}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Web search workload and PS discipline at 99\% confidence interval\relax }}{40}{figure.caption.33}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Web Search workload and PS discipline at 99\% confidence interval.\relax }}{39}{figure.caption.32}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Effects of intra-server demotion with spatial diversity. Results shown for web search workload, PS and fixed $K=4$. Results plotted with 99\% confidence interval.\relax }}{40}{figure.caption.33}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Effects of intra-server demotion with spatial diversity. Results shown for web search workload, PS and fixed $K=2$. Results plotted with 99\% confidence interval.\relax }}{41}{figure.caption.34}
 \addvspace {10\p@ }
