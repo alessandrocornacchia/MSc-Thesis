@@ -168,13 +168,12 @@ So far the only scenario that has been investigated is the simple case of two pa
 % dire python scipy solver
 % TODO citare basin hoppin e pso heuristics (some parameters used, bla bla)
 % TODO why complexity is higher at load 0.6 ???
-% TODO However, notice that their heavy-tails are progressively reduced with strong implications in the way spatial diversity can be applied to very large topologies. More details on this will be provided in the remaining of this work. 
-\section{The service discipline: FIFO or PS?}
+\section{Dimensioning spatial diversity}
 In the previous section it was laid down the basic framework of spatial diversity. It was remarked the fact that adopting spatial diversity translates into a priority-driven load balancing. At the same time were collected encouraging results about the effectiveness of the optimal load balancing. It was discussed the impact of two workloads commonly used as a benchmark in literature. Then, it was solved the optimal load balancing problem for up to $K$=9 parallel servers ans shown that for large topologies we may incur in overwhelming complexity. In all the simple experiments carried out, the servers were always configured with Processor Sharing service discipline and without priority queues.
 
 This section aims to provide answers to principally two things. The first one is the behavior of the priority-driven load balancing when increasing the number of server $K$ up to 9 parallel servers. Thus, we try to evaluate the effects of the load balance thresholds alone with bigger topologies, initially disregarding sub-thresholds again. Second, it is treated the integration of the priority-driven load balancing with the legacy MLFQ system. In practice, it is considered the general case where each server has many PQs on its interfaces used in strict priority. As it will be explained shortly, it turns out that for both attempts, the performances of the system are highly correlated with the adopted servicing policy. The two considered cases are the FIFO (FCFS) servers and the usual PS servers. 
 
-\subsection{Dimensioning spatial-diversity}
+\subsection{Effects of SD-rank and PQ granularity}
 \label{sec:dimensioning-spatial}
 First it is addressed the first question: what are the effects of augmenting the spatial diversity \emph{rank}? 
 \begin{tcolorbox}[title=Terminology]
@@ -274,18 +273,79 @@ We repeated the same experiment with the smallest possible rank that guarantees 
 	\caption{Effects of intra-server demotion with spatial diversity. Results shown for web search workload, PS and fixed $K=2$. Results plotted with 99\% confidence interval.}
 	\label{fig:sdmlfq-variable-N-K2}
 \end{figure}%
-Intriguingly, the problem on longer flows starts to reveal, but with less intensity. This suggests some correlation between the spatial diversity rank and the critical behavior of long flows, especially when there are 8 priority queues per server.  Short and medium flows experience exactly the same trend as in the case $K$=4, but in this case it is visually more clear (Fig.\ref{fig:sdmlfq-variable-N-fct-detailed-K2}) because it is not squeezed by the scale of y-axis. \\\\
-Summarizing, these experiments leave the following remarks as concerns the Processor Sharing (PS) discipline:
+Intriguingly, the problem on longer flows starts to reveal, but with less intensity. This suggests some correlation between the spatial diversity rank and the critical behavior of long flows, especially when there are 8 priority queues per server.  Short and medium flows experience exactly the same trend as in the case $K$=4, but in this case it is visually more clear (Fig.\ref{fig:sdmlfq-variable-N-fct-detailed-K2}) because it is not squeezed by the scale of y-axis. 
+\subsection{Impairments of spatial-diversity}
+Summarizing, the previous experiments leave the following remarks as concerns the Processor Sharing (PS) discipline:
 \begin{itemize}
 	\item \textbf{Remark 1. \textit{Impact of PQ granularity}.} Whatever the spatial diversity rank (number of parallel servers across the which is applied spatial diversity), there is a nFCT penalty for long flows in using more than $N$=2 priority queues per server.
 	\item \textbf{Remark 2. \textit{Impact of SD-rank}.} When $N>1$, that is when intra-server demotion is applied, increasing the spatial diversity rank rapidly exacerbates the nFCT impairments on long flows. The performance drop may become unacceptable and dominate the behavior of the average FCT curve.
 \end{itemize}
-Such an extreme behavior on long flows was worth of extra-attention. In particular, it brings up an important question: is the best choice to continue demotion also in low priority servers?
-%configure low priority servers with a fine-grained prioritization?
-\subsubsection{Elephant demotion}
-We question whether it is meaningful to 
-\textcolor{red}{TODO Describe figures of hazard rate and optimal demotions for low priority spines. Link this observation with previous intuition that subsequent spines observe distribtions with less and less variability (LAS and SRPT require high variability !!!)}. 
+Such an extreme behavior on long flows was worth of extra-attention. In particular, it brings up two important questions: why does it happen? Is the best choice to continue demotion also in low priority servers?
+We concern why spatial diversity exacerbates the unfairness of the scheduler with respect to longer flows. The fact that long flows are penalized is not new. Both LAS, the theoretical scheduling policy, and MLFQ, its approximation with priority queues, suffered the problem of long flows starvation. Nonetheless, the spatial diversity presents a peculiar impairment that worsen the performances if the size of the topology --- precisely the SD-rank --- grows. We identified two causes of the problem: demotion in low priority servers and flow synchronization. Unfortunately, both of them are either originated or amplified by the spatial diversity. 
+\subsubsection{Demotion in low priority servers}
+We ask whether it is meaningful to exploit all available priority queues in low priority servers for flow demotion, or not. We addressed this problem by looking at the simple scenario of $K=N=2$ with the web search workload. This setting allows to have a single load balance threshold and a single sub-threshold in each server $s_1,s_2$. Then, we tried to optimize the sub-threshold on the low priority server, for any possible load balance threshold. This step was easily treatable numerically with a brute-force minimization, as there is only one sub-threshold.
+\begin{figure}
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.99\textwidth]{Chapter3/Figures/cut_demotion}
+		\caption{Optimal sub threshold for $s_2$ ($\lambda=0.99$)}
+		\label{fig:opt-subth-lowpserver}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.99\textwidth]{Chapter3/Figures/hazard_pareto}
+		\caption{Hazard function.}
+		\label{fig:hazard}
+	\end{subfigure}%
+	\caption{WS workload}
+\end{figure}%
+Figure \ref{fig:opt-subth-lowpserver} shows the results. On the abscissa there are the cut percentile at which the load balance threshold truncate the job size distribution. The lower bound (blue curve) is the load balance threshold value, varying in order to cut the workload cdf at a given percentile.  The upper bound (black dashed line) is the length of the longest job in the workload. Finally, it is shown the optimal sub-threshold of the low priority server $s_2$ (orange line), computed for each imposed cut. The notable result is that starting from nearly the 90-th percentile, it is not convenient to use PQs on the low priority server for demotion. Indeed, the optimal sub-threshold saturates to the extreme of the support. This is coherent with the increasing hazard function at high percentiles. Indeed, it was discussed (\S \ref{sec:las}) that LAS scheduling is convenient when the hazard rate $h(x)$ is a decreasing function.\\
+This experiment also explained why the performances are so bad when the dimensions of the system increase. The heavy-tail of the DC-wide workload is progressively reduced as considering lower and lower priority servers. Under this condition, it is not recommended to schedule with LAS discipline, thus many intra-server demotion are a downside. Intuitively, since lower priority servers receive only jobs corresponding to high percentiles, on these servers long flows cause protracted starvation of longer elephant flows. 
 \subsubsection{Flow synchronization}
-\textcolor{red}{Problems of previous subsubsection are exacerbated by flow syn phenomenon (not observed in PIAS)}.
+The second issue we have identified is flow synchronization. Consider the topology with $K$=5 and $N$=2. We plot the CDF of the flow inter-arrival time, that is the distribution of the time elapsed between two consecutive job arrivals. 
+\begin{figure}
+	\centering
+	\captionsetup{width=.75\linewidth}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.99\textwidth]{Chapter3/Figures/inter_arrival0_PS}
+		\caption{CDF at $s_1$}
+		\label{fig:iatimes-ps-s1}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.99\textwidth]{Chapter3/Figures/inter_arrival4_PS}
+		\caption{CDF at $s_5$}
+		\label{fig:iatimes-ps-s5}
+	\end{subfigure}%
+	\caption{Flow synchronization with PS discipline. Flow inter-arrival distributions at highest and lowest priority servers.}
+	\label{fig:iatimes-ps}
+\end{figure}%
+As usual the notation $s_i$ indicates the servers, from higher to lower priority. By looking at the distribution on the lowest priority server $s_5$, there is an anomalous spike at 0ms inter-arrival, that spans the y-axis up to the 90-th percentile (Fig.\ref{fig:iatimes-ps-s5}). This is strange because all flows enter the system from $s_1$, hence we expected a flatter cumulative function, at least at the beginning. Instead, its shape discloses bursts of flow arrivals, with many of them arriving synchronized at the same time instants. \\
+We explain this synchronization as a joint result of processor sharing, strict priority and flow demotion. Consider a generic set of flows $\mathcal{F}$, whose sizes are such that the all flows end their service in $s_5$. Denote with $Q_i^j$ the $i$-th priority queue of the $j$-th server, with the usual order and notation followed in the theoretical model of spatial diversity (\S \ref{sec:complete-model}). Flow $\tilde{f}$ enters the system through $s_1$ and starts its service. Denote with $\mathcal{F}^\prime$  all flows $f \in \mathcal{F} \setminus \{\tilde{f}\}$ entered the system before $\tilde{f}$. Instead, use $\mathcal{F}^{\dprime}$ for all flows $f \in \mathcal{F} \setminus \{\tilde{f}\}$ arriving after $\tilde{f}$ but still while $\tilde{f}$ is served by the first server. Flows in $\mathcal{F}^{\dprime}$ either share the processor with $\tilde{f}$ in the high priority queue $Q_1^1$ or are served with higher priority of $\tilde{f}$ because this is already in the lowest priority queue $Q_2^1$.  In both cases, $\tilde{f}$ is the first to be shifted to the lowest PQ and at this point happens the synchronization. As a matter of fact $\tilde{f}$ doesn't leave the lowest PQ until all flows $f \in \mathcal{F}^{\dprime}$ do. First it waits them in $Q_2^1$ because of strict priority scheduling among PQs, then it shares the processor with them. When finally $\tilde{f}$ is rerouted to the subsequent server $s_2$, those flows in $\mathcal{F}^\prime$ that are yet served in $s_2$, again synchronize themselves with --- at least --- $\tilde{f}$.  In other words, the combination of spatial diversity, processor sharing and strict priority create on-off bottlenecks that lead to synchronization. This explanation is validated by the fact that in case of FIFO we do not observe any of this effect. Figure \ref{fig:iatimes-fifo} reports the inter-arrivals at the lowest priority servers $s_5$; for $s_1$ it is appropriately identical to the one obtained with PS.
+\begin{figure}
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+			\includegraphics[width=0.99\textwidth]{Chapter3/Figures/inter_arrival0_FIFO}
+		\caption{CDF at $s_1$}
+		\label{fig:iatimes-fifo-s1}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[width=0.99\textwidth]{Chapter3/Figures/inter_arrival4_FIFO}
+		\caption{CDF at $s_5$}
+		\label{fig:iatimes-fifo-s5}
+	\end{subfigure}%
+	\caption{FIFO does not suffer flow sync. CDF of inter-arrivals shown only for $s_5$}
+	\label{fig:iatimes-fifo}
+\end{figure}%
+
+We think that this flow synchronization arises also in the system without spatial diversity and it is something not highlighted by authors of PIAS. Instead of showing at server level, we think that bursts arrivals could occur at priority queue level, especially when $N$ is large. However, since lower priority queues are served in strict priority only when high PQs are empty, we guess that these bursts are also less penalizing.
+\textcolor{red}{QUAL'ERA IL COMMENTO DI ANDREA ? CHE IN UNA RETE A PACCHETTO PROBABILMENTE NON SI VEDE COSI TANTO?? PERCHE' ? PERCHE' IL FLUSSO NON CE L'HAI TUTTO SUBITO MA LE TCP SOURCES TE LO MANDANO SEGMENTATO?}
 \subsection{Final comparison}
 \textcolor{red}{Final comparison with ES-N (no spatial). Show plots and resume table}.

@@ -3,25 +3,28 @@
 \babel@toc {italian}{}
 \babel@toc {english}{}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces interconnection networks.\relax }}{2}{figure.caption.4}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces interconnection networks.\relax }}{4}{figure.caption.5}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Datacenter fabric abstraction as a giant switch\relax }}{10}{figure.caption.6}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces PIAS overview\relax }}{12}{figure.caption.9}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Queueing model\relax }}{14}{figure.caption.10}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Datacenter fabric abstraction as a giant switch\relax }}{12}{figure.caption.7}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces PIAS overview\relax }}{14}{figure.caption.10}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Queueing model\relax }}{16}{figure.caption.11}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Demotion extension with spatial diversity. Red arrows indicate demotion trajectory of the longest flow. On each switch is reported the priorities it handles. Lower indexes (and darker colors) correspond to higher priorities.\relax }}{20}{figure.caption.15}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Three queuing system comparison.\relax }}{21}{figure.caption.16}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Mapping of the model abstraction with DCN topology\relax }}{21}{figure.caption.17}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Job size distributions observed by servers $s_1$, $s_2$, $s_3$ in decreasing order of priority. Optimal load balance split for $\lambda =0.9$.\relax }}{24}{figure.caption.18}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Demotion extension with spatial diversity. Red arrows indicate demotion trajectory of the longest flow. On each switch is reported the priorities it handles. Lower indexes (and darker colors) correspond to higher priorities.\relax }}{22}{figure.caption.16}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Three queuing system comparison.\relax }}{23}{figure.caption.17}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Mapping of the model abstraction with DCN topology\relax }}{23}{figure.caption.18}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Job size distributions observed by servers $s_1$, $s_2$, $s_3$ in decreasing order of priority. Optimal load balance split for $\lambda =0.9$.\relax }}{26}{figure.caption.19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Workload properties\relax }}{30}{figure.caption.22}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Web search workload. Simple case of $K$=2.\relax }}{33}{figure.caption.23}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Data mining workload. Simple case of $K$=2.\relax }}{33}{figure.caption.24}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces M/M/1 response time\relax }}{34}{figure.caption.26}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Web Search workload\relax }}{35}{figure.caption.28}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Data Mining workload\relax }}{36}{figure.caption.29}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Web Search workload and FIFO discipline at 99\% confidence interval.\relax }}{38}{figure.caption.31}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Web Search workload and PS discipline at 99\% confidence interval.\relax }}{39}{figure.caption.32}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Effects of intra-server demotion with spatial diversity. Results shown for web search workload, PS and fixed $K=4$. Results plotted with 99\% confidence interval.\relax }}{40}{figure.caption.33}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Effects of intra-server demotion with spatial diversity. Results shown for web search workload, PS and fixed $K=2$. Results plotted with 99\% confidence interval.\relax }}{41}{figure.caption.34}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Workload properties\relax }}{32}{figure.caption.23}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Web search workload. Simple case of $K$=2.\relax }}{35}{figure.caption.24}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Data mining workload. Simple case of $K$=2.\relax }}{35}{figure.caption.25}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces M/M/1 response time\relax }}{36}{figure.caption.27}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Web Search workload\relax }}{37}{figure.caption.29}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Data Mining workload\relax }}{38}{figure.caption.30}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Web Search workload and FIFO discipline at 99\% confidence interval.\relax }}{40}{figure.caption.32}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Web Search workload and PS discipline at 99\% confidence interval.\relax }}{41}{figure.caption.33}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Effects of intra-server demotion with spatial diversity. Results shown for web search workload, PS and fixed $K=4$. Results plotted with 99\% confidence interval.\relax }}{42}{figure.caption.34}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Effects of intra-server demotion with spatial diversity. Results shown for web search workload, PS and fixed $K=2$. Results plotted with 99\% confidence interval.\relax }}{43}{figure.caption.35}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces WS workload\relax }}{44}{figure.caption.37}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Flow synchronization with PS discipline. Flow inter-arrival distributions at highest and lowest priority servers.\relax }}{45}{figure.caption.39}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces FIFO does not suffer flow sync. CDF of inter-arrivals shown only for $s_5$\relax }}{46}{figure.caption.40}
 \addvspace {10\p@ }
