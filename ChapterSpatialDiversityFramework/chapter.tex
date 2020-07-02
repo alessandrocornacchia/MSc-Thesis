@@ -130,7 +130,8 @@ Let the notation $\mu_i^j$ indicate the drain rate of the $i$-th queue in the $j
 \theta_i^j &= F(\alpha_i^j) - F(\alpha_{i-1}^j)	\\
 \mathbb{E}[T_i^j] &= \dfrac{1}{\mu_i^j - \lambda_i^j}
 \end{align*}
-The formulation is essentially the same but with an additional dimension that takes into account the existence of multiple servers. Every server is modeled as a tandem of $N$ queues, exactly as in PIAS. Then, there are $K$ of them in parallel. Also, we wrote an additional constraint Eq.\eqref{eq:overload-constr} that prevents overloading any spine \textcolor{red}{(TODO: additional constraint is it really needed??? in case of overloading, sojourn times goes to infinity, so it is unlikely it is chosen as solution....)}. 
+The formulation is essentially the same but with an additional dimension that takes into account the existence of multiple servers. Every server is modeled as a tandem of $N$ queues, exactly as in PIAS. Then, there are $K$ of them in parallel. Also, we wrote an additional constraint Eq.\eqref{eq:overload-constr} that prevents overloading any spine 
+\textcolor{red}{(TODO: additional constraint is it really needed??? in case of overloading, sojourn times goes to infinity, so it is unlikely it is chosen as solution....)}. 
 \begin{subequations}
 	\begin{align}
 	&\underset{\{\theta_i^j\}}{\text{min}} & \quad  & \mathcal{T} =	\sum_{j=1}^{K}\sum_{i=1}^{N} \theta_i^j \sum_{j=i}^{N}T^s_j 					\label{eq::costfunction-spatial} & \\

@@ -1,5 +1,13 @@
 \begin{thebibliography}{10}
 
+\bibitem{inet}
+Inet framework.
+\newblock \url{https://inet.omnetpp.org/}.
+
+\bibitem{omnetpp}
+Omnet++. discrete event simulator.
+\newblock \url{https://omnetpp.org/}.
+
 \bibitem{Gittins}
 Samuli Aalto, Urtzi Ayesta, and Rhonda Righter.
 \newblock On the gittins index in the m/g/1 queue.
@@ -44,6 +52,11 @@ Mark~E. Crovella.
 \newblock In Dror~G. Feitelson and Larry Rudolph, editors, {\em Job Scheduling
   Strategies for Parallel Processing}, pages 1--10, Berlin, Heidelberg, 2001.
   Springer Berlin Heidelberg.
+
+\bibitem{ek1999ieee}
+Niclas Ek.
+\newblock Ieee 802.1 p, q-qos on the mac level.
+\newblock {\em Apr}, 24:0003--0006, 1999.
 
 \bibitem{vl2}
 Albert Greenberg, James~R. Hamilton, Navendu Jain, Srikanth Kandula, Changhoon

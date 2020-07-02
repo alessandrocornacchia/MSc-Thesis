@@ -41,18 +41,21 @@
 \contentsline {subsection}{\numberline {4.1.2}Optimal traffic load balancing}{34}{subsection.4.1.2}
 \contentsline {subsubsection}{Load balance on 2 parallel servers}{34}{section*.26}
 \contentsline {subsubsection}{Validity of the model}{37}{section*.28}
-\contentsline {subsubsection}{Analysis of the model scalability}{39}{section*.31}
+\contentsline {subsubsection}{Finding optimal load balance with Basin-hopping}{39}{section*.31}
 \contentsline {section}{\numberline {4.2}Dimensioning spatial diversity}{39}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Effects of SD-rank and PQ granularity}{39}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Impairments of spatial-diversity}{43}{subsection.4.2.2}
 \contentsline {subsubsection}{Demotion in low priority servers}{44}{section*.36}
 \contentsline {subsubsection}{Flow synchronization}{45}{section*.38}
 \contentsline {subsection}{\numberline {4.2.3}Final comparison}{46}{subsection.4.2.3}
-\contentsline {chapter}{\numberline {5}Evaluation in a Datacenter Network}{47}{chapter.5}
-\contentsline {section}{\numberline {5.1}title}{47}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}title}{47}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}title}{47}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}title}{47}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}title}{47}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}title}{47}{subsection.5.2.2}
-\contentsline {chapter}{Bibliography}{49}{chapter*.41}
+\contentsline {chapter}{\numberline {5}Evaluation in simulated Data Center Network}{47}{chapter.5}
+\contentsline {section}{\numberline {5.1}Simulator setup}{47}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Traffic generation}{48}{subsection.5.1.1}
+\contentsline {subsubsection}{Simulation length}{50}{section*.42}
+\contentsline {subsection}{\numberline {5.1.2}Network configuration}{50}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Host configuration}{51}{subsection.5.1.3}
+\contentsline {subsubsection}{TCP}{51}{section*.43}
+\contentsline {subsubsection}{UDP}{51}{section*.44}
+\contentsline {subsection}{\numberline {5.1.4}DCTCP}{51}{subsection.5.1.4}
+\contentsline {section}{\numberline {5.2}Result analysis}{51}{section.5.2}
+\contentsline {chapter}{Bibliography}{53}{chapter*.45}

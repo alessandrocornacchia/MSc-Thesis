@@ -5,6 +5,7 @@ Next sections will be an in-depth analysis of dynamics of the spatial diversity,
 \section{Model implementation}
 
 \subsection{Workloads}
+\label{sec:workloads}
 The performances of the three systems are compared using two empirical flow size distributions that have been derived from production data centers (Figure \ref{fig:workloads}). Flow size distribution is shortly termed \emph{workload}. The first workload has been estimated instrumenting thousands of servers in a datacenter hosting a Web search \cite{dctcp} application, while the other refers to data mining tasks \cite{vl2}. 
 \begin{figure}
 	\centering
@@ -26,6 +27,7 @@ The performances of the three systems are compared using two empirical flow size
 \end{figure}
 As expected, these distributions have a mix of short and long flows and both present the high-variability property typical of data center traffic (\S \ref{sec:traffic-properties}). Figure \ref{fig:cdfs} shows with solid lines the cumulative density function of the two empirical workloads, along with two analytical bounded Pareto distributions (dashed lines), whose parameters have been fitted to the corresponding empirical points. The bounded Pareto distribution is a truncated version of the Pareto distribution over the finite support $[u,t]$ and it is well-suited to model heavy-tail characteristics. It has three parameter: the lower extreme of its support $u$, the upper extreme $t$ and the shape parameter $\alpha$ that controls the weight of its tail. The analytical expression of its cdf $F(x)$ in the interval $[u,t]$ is:
 \begin{equation}
+	\label{eq:bpcdf}
 	F(x) = \dfrac{1-\Big(\dfrac{u}{x}\Big)^{\alpha}}{1-\Big(\dfrac{u}{t}\Big)^{\alpha}}, \qquad 0 \le \alpha \le 2
 \end{equation}
 This distribution has been chosen to be used in the analysis due to some graceful properties. First of all, it is relatively easy to control its variability by a proper tuning of its parameter $\alpha$. Values of $\alpha$ close to 2 accentuate the heavy-tail property, while smaller values of $\alpha$ tend to regularize a bit its behavior. Second, being definite on a limited support it can be adapted to any minimum and maximum flow size in the datacenter. Third, the Pareto distribution is scale-invariant, meaning that normalized Pareto distributions remains Pareto. Nicely, this implies that the workloads observed by subsequent servers can be always modeled with the same probability distribution, only changing parameters. After all --- as seen in chapter \ref{ch:sdframework} --- these workloads  are conditional distribution obtained with simple normalizations. Last, its mean and its variance  --- which depend on $\alpha$ --- are finite, thus the problem of finding the shape parameter for any fixed first and second moment can be smoothly treated numerically. Specifically, for the bounded Pareto, the mean and the variance have the following expression:
@@ -100,7 +102,9 @@ In the basic case of $K$=2 parallel servers, it is possible to plot the average 
 \mathcal{T} = \sum_{i=1}^{N}\textcolor{red}{\theta_i} \sum_{j=i}^{N}T_j
 \]
 Since the data mining workload is highly dominated by short flows, they receive more importance and longer flows are moved soon to another path. Plenty of short flows carrying few bytes are kept on a separated link from medium sized flows and a couple of long flows. Thus, the result is not a surprise but it is coherent with the flow distribution. \\
-Slightly different trend is observed for web search. Moving from low to high values of $\lambda$, the optimal threshold is initially greater than the perfect split axis, then switches to its left and finally the two coincide. This is clear from the load distribution on the two servers. In general, for web search the load remains more balanced between the two servers in respect to data mining. The more unbalanced split occurs at $\lambda$=0.3 where 70\% of the traffic is handled by the low priority server. Instead, data mining has much more extreme load subdivision, especially for $\lambda$=0.1. This is a consequence of the high variability of the workload: there is six order of magnitude difference between the shortest and the longest flow and there is a pronounced heavy-tail. Hence in order to have significant changes on the weights $\theta_i$ the threshold is moved significantly along the heavy-tail. In other words, the optimal threshold reroute few flows but lot of traffic on the low priority server. In fact, for $\lambda$=0.1 the absolute value of the optimal threshold is much smaller than the proportionate split threshold, however only a small fraction of flows fits into this gap. Also, for similar reasoning, the two workloads have different sensitivities to the load balance threshold optimization. In particular, the web search achieves appreciable FCT gains starting from medium loads only ($\lambda > 0.5$) with \textcolor{red}{(TODO provide some numbers)}, whereas at low loads there is no practical difference with the proportionate split. On the contrary, the data mining distribution gives theoretically a \textcolor{red}{(TODO provide some numbers)} lower waiting time even for $\lambda$=0.1. %This again reflects the extreme variability of the workload, that is comprised by a disproportionate number of short flows. %The perfect split would keep a lot of mice flows mixed with low priority flows of bigger size for protracted service time. Instead, 
+Slightly different trend is observed for web search. Moving from low to high values of $\lambda$, the optimal threshold is initially greater than the perfect split axis, then switches to its left and finally the two coincide. This is clear from the load distribution on the two servers. In general, for web search the load remains more balanced between the two servers in respect to data mining. The more unbalanced split occurs at $\lambda$=0.3 where 70\% of the traffic is handled by the low priority server. Instead, data mining has much more extreme load subdivision, especially for $\lambda$=0.1. This is a consequence of the high variability of the workload: there is six order of magnitude difference between the shortest and the longest flow and there is a pronounced heavy-tail. Hence in order to have significant changes on the weights $\theta_i$ the threshold is moved significantly along the heavy-tail. In other words, the optimal threshold reroute few flows but lot of traffic on the low priority server. In fact, for $\lambda$=0.1 the absolute value of the optimal threshold is much smaller than the proportionate split threshold, however only a small fraction of flows fits into this gap. Also, for similar reasoning, the two workloads have different sensitivities to the load balance threshold optimization. In particular, the web search achieves appreciable FCT gains starting from medium loads only ($\lambda > 0.5$) with a factor 2 gain%\textcolor{red}{(TODO provide some numbers)}, 
+whereas at low loads there is no practical difference with the proportionate split. On the contrary, the data mining distribution gives theoretically an order of magnitude %\textcolor{red}{(TODO provide some numbers)} 
+lower waiting time even for $\lambda$=0.1. %This again reflects the extreme variability of the workload, that is comprised by a disproportionate number of short flows. %The perfect split would keep a lot of mice flows mixed with low priority flows of bigger size for protracted service time. Instead, 
 Finally, for both cases the objective function becomes much more extremely curled and steep around the perfect split axis when the load approaches the saturation value 1.  As already remarked, this is inevitable in order to fully exploit all the available capacity offered by the two parallel servers. At so high load any other traffic split would overload one of the two links and strongly deteriorate the average completion time of the flows going through it. Consistently, the cost function grows very rapidly in the neighborhood of the perfect split threshold value. Indeed, the M/M/1 response time $T$ grows exponentially close to saturation. Its law (Figure \ref{fig:mm1-responsetime}) is:
 \[
 T \propto \dfrac{1}{1-\rho}
@@ -130,13 +134,13 @@ Figures \ref{fig:optlb-ws}-\ref{fig:optlb-dm} report the nFCT gain obtained than
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=1.05\textwidth]{Chapter3/Figures/ws_ps_comparison}
-		\caption{nFCT comparison \textcolor{red}{TODO factor 2}}
+		\caption{nFCT comparison}
 		\label{fig:optlbgain-ws}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{Chapter3/Figures/ws_ps_detailed.png}
-		\caption{Per-flow length nFCT. \textcolor{red}{TODO $\lambda=$?}}
+		\caption{Per-flow length nFCT. $\lambda=$0.9}
 		\label{fig:optlbgainvsflowsize-ws}
 	\end{subfigure}%
 	\caption{Web Search workload}
@@ -147,13 +151,13 @@ Figures \ref{fig:optlb-ws}-\ref{fig:optlb-dm} report the nFCT gain obtained than
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=1.05\textwidth]{Chapter3/Figures/dm_ps_comparison.png}
-		\caption{nFCT comparison \textcolor{red}{TODO factor 2}}
+		\caption{nFCT comparison.}
 		\label{fig:optlbgain-dm}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{Chapter3/Figures/dm_ps_detailed.png}
-		\caption{Per-flow length nFCT. \textcolor{red}{TODO $\lambda=$?}}
+		\caption{Per-flow length nFCT. $\lambda=$0.9}
 		\label{fig:optlbgainvsflowsize-dm}
 	\end{subfigure}%
 	\caption{Data Mining workload}
@@ -163,8 +167,14 @@ Two different scenarios are compared. Both adopt spatially-diverse MLFQ, but in 
 Next, let's concentrate on the spatial diversity with optimal load balancing (green curves), which is the real experiment needed in order to validate the model. The two workload perform similarly and have analogous trends. More importantly, the encouraging result is that short and medium flows indeed take advantage of spatial diversity, as they are sent through a less loaded path. For the data mining case, there is approximatively a 35\% gain for flows smaller than 6MB. The opposite happens to long jobs, which undergone the dual effect.
 % TODO definition of main spatial diversity principles (bullet item list)
 % TODO M/M/1 vs M/G/1 how implemented in practise? Assumed poisson arrivals but not true....what changed? How determined the variance of the job for subsequent servers? 
-\subsubsection{Analysis of the model scalability}
-So far the only scenario that has been investigated is the simple case of two parallel servers without sub-thresholds. This was useful to get confident with the relationships between load balance and the spatial diversity demotion mechanism. However, in the more general setting there might be much more parallel servers and at least two priority levels per server. The total number of thresholds was reduced by decoupling the load distribution by the server-local prioritization. Thus, the total complexity only depends on the number of servers $K$. Unfortunately, it is still typically high. \textcolor{red}{TODO basin hoppin brief description (GERMAN) + parameter setting of the solver (GERMAN) + solution time plot descrioption (ALE)}
+\subsubsection{Finding optimal load balance with Basin-hopping}
+So far the only scenario that has been investigated is the simple case of two parallel servers without sub-thresholds. This was useful to get confident with the relationships between load balance and the spatial diversity demotion mechanism. However, in the more general setting there might be much more parallel servers and at least two priority levels per server. The total number of thresholds was reduced by decoupling the load distribution by the server-local prioritization. Thus, the total complexity only depends on the number of servers $K$. Unfortunately, it is still typically high. 
+%\textcolor{red}{TODO basin hoppin brief description (GERMAN) + parameter setting of the solver (GERMAN) + solution time plot descrioption (ALE)}
+Basin-hopping is a meta-heuristic which provides means of solving non-convex optimization problems.
+It operates on an iterative basis by selecting random starting point in possible solution state-space and performing local minimization. 
+Subsequently the process is repeated by "hopping" to a different point and re-performing minimum search.
+We consider BFGS as a local minimization algorithm, we set a step size equals to 100 for random perturbation as it was empirically found to be a good trade-off between convergence speed and accuracy.
+We then perform 300 iterations for each point in \textbf{figura con i load} on a Intel i7-7700k with 16GB of RAM.
 % dire python scipy solver
 % TODO citare basin hoppin e pso heuristics (some parameters used, bla bla)
 % TODO why complexity is higher at load 0.6 ???
@@ -345,7 +355,6 @@ We explain this synchronization as a joint result of processor sharing, strict p
 	\label{fig:iatimes-fifo}
 \end{figure}%
 
-We think that this flow synchronization arises also in the system without spatial diversity and it is something not highlighted by authors of PIAS. Instead of showing at server level, we think that bursts arrivals could occur at priority queue level, especially when $N$ is large. However, since lower priority queues are served in strict priority only when high PQs are empty, we guess that these bursts are also less penalizing.
-\textcolor{red}{QUAL'ERA IL COMMENTO DI ANDREA ? CHE IN UNA RETE A PACCHETTO PROBABILMENTE NON SI VEDE COSI TANTO?? PERCHE' ? PERCHE' IL FLUSSO NON CE L'HAI TUTTO SUBITO MA LE TCP SOURCES TE LO MANDANO SEGMENTATO?}
+We think that this flow synchronization arises also in the system without spatial diversity and it is something not highlighted by authors of PIAS. Instead of showing at server level, we think that bursts arrivals could occur at priority queue level, especially when $N$ is large. However, since lower priority queues are served in strict priority only when high PQs are empty, we guess that these bursts are also less penalizing. \textcolor{red}{QUAL'ERA IL COMMENTO DI ANDREA ? CHE IN UNA RETE A PACCHETTO PROBABILMENTE NON SI VEDE COSI TANTO?? PERCHE' ? PERCHE' IL FLUSSO NON CE L'HAI TUTTO SUBITO MA LE TCP SOURCES TE LO MANDANO SEGMENTATO?}
 \subsection{Final comparison}
-\textcolor{red}{Final comparison with ES-N (no spatial). Show plots and resume table}.
+%\textcolor{red}{Final comparison with ES-N (no spatial). Show plots and resume table}.
