@@ -14,45 +14,47 @@ The style file: plain.bst
 Database file #1: biblio.bib
 Warning--to sort, need author or key in omnetpp
 Warning--to sort, need author or key in inet
-You've used 18 entries,
+Warning--to sort, need author or key in ipecn
+Warning--to sort, need author or key in synecn
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            624 strings with 7618 characters,
-and the built_in function-call counts, 7290 in all, are:
-= -- 722
-> -- 364
+            630 strings with 7857 characters,
+and the built_in function-call counts, 7610 in all, are:
+= -- 752
+> -- 366
 < -- 8
-+ -- 147
++ -- 150
 - -- 126
-* -- 497
-:= -- 1139
-add.period$ -- 57
-call.type$ -- 18
-change.case$ -- 116
+* -- 507
+:= -- 1173
+add.period$ -- 61
+call.type$ -- 20
+change.case$ -- 122
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 299
-empty$ -- 534
+cite$ -- 24
+duplicate$ -- 313
+empty$ -- 580
 format.name$ -- 126
-if$ -- 1589
+if$ -- 1669
 int.to.chr$ -- 0
-int.to.str$ -- 18
+int.to.str$ -- 20
 missing$ -- 16
-newline$ -- 91
+newline$ -- 99
 num.names$ -- 34
-pop$ -- 125
+pop$ -- 141
 preamble$ -- 1
-purify$ -- 98
+purify$ -- 102
 quote$ -- 0
-skip$ -- 255
+skip$ -- 271
 stack$ -- 0
-substring$ -- 420
-swap$ -- 112
+substring$ -- 431
+swap$ -- 114
 text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 72
-warning$ -- 2
+type$ -- 80
+warning$ -- 4
 while$ -- 52
-width$ -- 20
-write$ -- 204
-(There were 2 warnings)
+width$ -- 22
+write$ -- 218
+(There were 4 warnings)

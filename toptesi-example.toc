@@ -10,52 +10,53 @@
 \contentsline {subsection}{\numberline {1.2.1}Traffic control objective: FCT}{5}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Traffic properties}{6}{subsection.1.2.2}
 \contentsline {subsection}{\numberline {1.2.3}Challenges in traffic control}{7}{subsection.1.2.3}
-\contentsline {subsection}{\numberline {1.2.4}Datacenter TCP(DCTCP)}{8}{subsection.1.2.4}
-\contentsline {subsubsection}{DCTCP}{8}{section*.6}
 \contentsline {chapter}{\numberline {2}Reducing FCT with flow prioritization}{9}{chapter.2}
 \contentsline {section}{\numberline {2.1}Theoretical scheduling background}{9}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Flow-aware disciplines}{9}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Flow-agnostic disciplines}{10}{subsection.2.1.2}
 \contentsline {section}{\numberline {2.2}State-of-the-art solutions in practical networks}{11}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}pFabric: targeting ideal schedulers}{12}{subsection.2.2.1}
-\contentsline {subsubsection}{Ideal flow scheduling in DCN}{12}{section*.8}
-\contentsline {subsubsection}{Approximate optimality with priority queues}{13}{section*.9}
+\contentsline {subsubsection}{Ideal flow scheduling in DCN}{12}{section*.7}
+\contentsline {subsubsection}{Approximate optimality with priority queues}{13}{section*.8}
 \contentsline {subsection}{\numberline {2.2.2}PIAS: the reference model}{14}{subsection.2.2.2}
 \contentsline {section}{\numberline {2.3}The problem of demotion thresholds}{15}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Stochastic queueing model}{15}{subsection.2.3.1}
-\contentsline {subsubsection}{Optimal thresholds}{18}{section*.13}
+\contentsline {subsubsection}{Optimal thresholds}{18}{section*.12}
 \contentsline {subsection}{\numberline {2.3.2}Greedy threshold assignment}{18}{subsection.2.3.2}
-\contentsline {subsubsection}{Equal Split (ES-N)}{19}{section*.14}
-\contentsline {subsubsection}{Load Split}{19}{section*.15}
+\contentsline {subsubsection}{Equal Split (ES-N)}{19}{section*.13}
+\contentsline {subsubsection}{Load Split}{19}{section*.14}
 \contentsline {chapter}{\numberline {3}The spatial-diversity framework}{21}{chapter.3}
 \contentsline {section}{\numberline {3.1}Improving scheduling with spatial-diversity}{21}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Abstraction as queuing system}{22}{subsection.3.1.1}
 \contentsline {section}{\numberline {3.2}Mathematical formulation for spatial-diversity}{24}{section.3.2}
-\contentsline {subsubsection}{Optimal solution}{26}{section*.20}
+\contentsline {subsubsection}{Optimal solution}{26}{section*.19}
 \contentsline {subsection}{\numberline {3.2.1}Decouple load balance from sub-thresholds}{28}{subsection.3.2.1}
-\contentsline {subsubsection}{Optimize load balance thresholds}{28}{section*.21}
-\contentsline {subsubsection}{Choose greedy sub-thresholds}{28}{section*.22}
+\contentsline {subsubsection}{Optimize load balance thresholds}{28}{section*.20}
+\contentsline {subsubsection}{Choose greedy sub-thresholds}{28}{section*.21}
 \contentsline {chapter}{\numberline {4}Numerical analysis of spatial diversity}{31}{chapter.4}
 \contentsline {section}{\numberline {4.1}Model implementation}{31}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Workloads}{31}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}Optimal traffic load balancing}{34}{subsection.4.1.2}
-\contentsline {subsubsection}{Load balance on 2 parallel servers}{34}{section*.26}
-\contentsline {subsubsection}{Validity of the model}{37}{section*.28}
-\contentsline {subsubsection}{Finding optimal load balance with Basin-hopping}{39}{section*.31}
+\contentsline {subsubsection}{Load balance on 2 parallel servers}{34}{section*.25}
+\contentsline {subsubsection}{Validity of the model}{37}{section*.27}
+\contentsline {subsubsection}{Finding optimal load balance with Basin-hopping}{39}{section*.30}
 \contentsline {section}{\numberline {4.2}Dimensioning spatial diversity}{39}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Effects of SD-rank and PQ granularity}{39}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Impairments of spatial-diversity}{43}{subsection.4.2.2}
-\contentsline {subsubsection}{Demotion in low priority servers}{44}{section*.36}
-\contentsline {subsubsection}{Flow synchronization}{45}{section*.38}
+\contentsline {subsubsection}{Demotion in low priority servers}{44}{section*.35}
+\contentsline {subsubsection}{Flow synchronization}{45}{section*.37}
 \contentsline {subsection}{\numberline {4.2.3}Final comparison}{46}{subsection.4.2.3}
 \contentsline {chapter}{\numberline {5}Evaluation in simulated Data Center Network}{47}{chapter.5}
 \contentsline {section}{\numberline {5.1}Simulator setup}{47}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Traffic generation}{48}{subsection.5.1.1}
-\contentsline {subsubsection}{Simulation length}{50}{section*.42}
-\contentsline {subsection}{\numberline {5.1.2}Network configuration}{50}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Host configuration}{51}{subsection.5.1.3}
-\contentsline {subsubsection}{TCP}{51}{section*.43}
-\contentsline {subsubsection}{UDP}{51}{section*.44}
-\contentsline {subsection}{\numberline {5.1.4}DCTCP}{51}{subsection.5.1.4}
-\contentsline {section}{\numberline {5.2}Result analysis}{51}{section.5.2}
-\contentsline {chapter}{Bibliography}{53}{chapter*.45}
+\contentsline {subsubsection}{Simulation length}{50}{section*.41}
+\contentsline {subsection}{\numberline {5.1.2}Host configuration}{50}{subsection.5.1.2}
+\contentsline {subsubsection}{TCP}{50}{section*.42}
+\contentsline {subsubsection}{UDP}{52}{section*.44}
+\contentsline {subsection}{\numberline {5.1.3}Network configuration}{53}{subsection.5.1.3}
+\contentsline {subsubsection}{Priority assignment in down-send}{54}{section*.46}
+\contentsline {subsection}{\numberline {5.1.4}Datacenter TCP(DCTCP)}{55}{subsection.5.1.4}
+\contentsline {subsubsection}{DCTCP testbed}{56}{section*.48}
+\contentsline {subsubsection}{Integrating ECN with SD-MLFQ}{56}{section*.50}
+\contentsline {section}{\numberline {5.2}Result analysis}{57}{section.5.2}
+\contentsline {chapter}{Bibliography}{59}{chapter*.51}

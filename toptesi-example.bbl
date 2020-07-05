@@ -1,5 +1,14 @@
 \begin{thebibliography}{10}
 
+\bibitem{synecn}
+{Adding Explicit Congestion Notification (ECN) Capability to TCP's SYN/ACK
+  Packets}.
+\newblock \url{https://www.rfc-editor.org/rfc/rfc5562}.
+
+\bibitem{ipecn}
+The addition of explicit congestion notification (ecn) to ip.
+\newblock \url{https://tools.ietf.org/html/rfc3168}.
+
 \bibitem{inet}
 Inet framework.
 \newblock \url{https://inet.omnetpp.org/}.
