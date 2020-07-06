@@ -144,3 +144,21 @@ We set ECN markers only in the network switches with recommended \cite{dctcp} th
 \textbf{Marking \texttt{SYN/ACK} with CE codepoint.}
 According to standardization \cite{ipecn}, ECN capable devices can mark with the congestion signal (\texttt{IP\_CE} - Congestion Experienced codepoint in the IP ToS field) only those packets with the  ECN Capable Transport codepoint set (\texttt{IP\_ECT} codepoint). However, the standard ECN extension to TCP specifies that control packets (\texttt{SYN, ACK, FIN},.) must been transmitted as Non ECN-Capable (\texttt{IP\_NOT\_ECT} codepoint). Thus, if they enter a switch interface when its occupancy exceeds the marking threshold, they are dropped rather than being marked. We noticed in our first simulations with DCTCP an anomalous number of retransmission timeouts (RTOs). We better investigated the number of bytes transmitted when TCP connections experienced RTOs: practically all timeout events occurred at connection setup. Thus, we implemented the modification to TCP that allows ECN-Capable control packets \cite{synecn}.
 \section{Result analysis}
+\begin{figure}
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.99\textwidth]{Chapter4/Figures/fct_detailed_fixed_N_2}
+		\caption{Testbed topology}
+
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.99\textwidth]{Chapter4/Figures/fct_detailed_fixed_N_2}
+		\caption{CDF of queue length, sampled every 3 packets}
+
+	\end{subfigure}%
+	\caption{DCTCP implementation testbed}
+
+\end{figure}%
