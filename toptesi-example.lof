@@ -28,12 +28,14 @@
 \contentsline {figure}{\numberline {4.12}{\ignorespaces Flow synchronization with PS discipline. Flow inter-arrival distributions at highest and lowest priority servers.\relax }}{45}{figure.caption.38}
 \contentsline {figure}{\numberline {4.13}{\ignorespaces FIFO does not suffer flow sync. CDF of inter-arrivals shown only for $s_5$\relax }}{46}{figure.caption.39}
 \contentsline {figure}{\numberline {4.14}{\ignorespaces Comparison among SD-MLFQ and ES-N for web search workload and FIFO. Results plotted with 99\% confidence interval.\relax }}{47}{figure.caption.40}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Comparison among SD-MLFQ and ES-N for web search workload and FIFO. Results plotted with 99\% confidence interval.\relax }}{47}{figure.caption.41}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Comparison among SD-MLFQ and ES-N for web search workload. Results plotted with 99\% confidence interval.\relax }}{48}{figure.caption.42}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Comparison among SD-MLFQ and ES-N for web search workload and PS at 99\% confidence interval. For both figures the number of priorities $N$ is fixed.\relax }}{48}{figure.caption.41}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Data center topology used in simulations\relax }}{50}{figure.caption.43}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Host architecture with TCP. Flows are interleaved thus emulating PS discipline.\relax }}{53}{figure.caption.46}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Host architecture with UDP. Flows are not interleaved thus emulating FIFO discipline.\relax }}{55}{figure.caption.48}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Priority mixture in egress interfaces\relax }}{57}{figure.caption.50}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces DCTCP implementation testbed\relax }}{58}{figure.caption.52}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces DCTCP implementation testbed\relax }}{59}{figure.caption.54}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Impact of traffic apportioning among PQs on TCP\relax }}{60}{figure.caption.55}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces MLFQ with ES-N thresholds for different $N$ and $\rho $=0.9\relax }}{62}{figure.caption.57}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Optimal vs ECMP load balancing with TCP\relax }}{62}{figure.caption.59}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Optimal vs ECMP load balancing with TCP\relax }}{63}{figure.caption.60}

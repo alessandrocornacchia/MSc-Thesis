@@ -116,7 +116,7 @@ T \propto \dfrac{1}{1-\rho}
 	\caption{M/M/1 response time}
 	\label{fig:mm1-responsetime}
 \end{figure}
-\subsubsection{Validity of the model}
+\subsubsection{Validity of the optimal load balance model}
 Summarizing, the above discussion confirms that the web search traffic is harder than the data mining to cope with. This is the reason why in the following some results are shown exclusively for this workload. 
 Next, it is consolidated the validity of the stochastic optimization model with numerical flow level simulations, in particular it is shown the effective benefit of optimal load balancing. The underlying topology is again the simplest one, comprised of two parallel M/M/1 servers with no inner prioritization. The serving discipline is Processor Sharing (PS), implemented with a fluid model where parallel flows are served with equally subdivided bandwidth. 
 The average normalized flow completion time (nFCT) has been considered as the primary evaluation metric.
@@ -277,6 +277,7 @@ We repeated the same experiment with the smallest possible rank that guarantees 
 \end{figure}%
 Intriguingly, the problem on longer flows starts to reveal, but with less intensity. This suggests some correlation between the spatial diversity rank and the critical behavior of long flows, especially when there are 8 priority queues per server.  Short and medium flows experience exactly the same trend as in the case $K$=4, but in this case it is visually more clear (Fig.\ref{fig:sdmlfq-variable-N-fct-detailed-K2}) because it is not squeezed by the scale of y-axis. 
 \subsection{Impairments of spatial-diversity}
+\label{sec:sd-impairments}
 Summarizing, the previous experiments leave the following remarks as concerns the Processor Sharing (PS) discipline:
 \begin{itemize}
 	\item \textbf{Remark 1. \textit{Impact of PQ granularity}.} Whatever the spatial diversity rank (number of parallel servers across the which is applied spatial diversity), there is a nFCT penalty for long flows in using more than $N$=2 priority queues per server.
@@ -304,7 +305,15 @@ We ask whether it is meaningful to exploit all available priority queues in low 
 	\caption{WS workload}
 \end{figure}%
 Figure \ref{fig:opt-subth-lowpserver} shows the results. On the abscissa there are the cut percentile at which the load balance threshold truncate the job size distribution. The lower bound (blue curve) is the load balance threshold value, varying in order to cut the workload cdf at a given percentile.  The upper bound (black dashed line) is the length of the longest job in the workload. Finally, it is shown the optimal sub-threshold of the low priority server $s_2$ (orange line), computed for each imposed cut. The notable result is that starting from nearly the 90-th percentile, it is not convenient to use PQs on the low priority server for demotion. Indeed, the optimal sub-threshold saturates to the extreme of the support. This is coherent with the increasing hazard function at high percentiles. Indeed, it was discussed (\S \ref{sec:las}) that LAS scheduling is convenient when the hazard rate $h(x)$ is a decreasing function.\\
-This experiment also explained why the performances are so bad when the dimensions of the system increase. Remember that subsequent servers observe cut workloads, whose heavy-tailed property is gradually destroyed. Thus, the heavy-tail of the DC-wide workload is progressively reduced as considering lower and lower priority servers. Under this condition, it is not recommended to schedule with LAS discipline, therefore intra-server demotion is a downside. Intuitively, since lower priority servers receive only jobs corresponding to high percentiles, long flows cause protracted starvation to each other, with the longest flows being the more penalized. As a side note, if the variability becomes so low, it would be even recommended to serve jobs with FIFO and not PS. 
+This experiment also explained why the performances are so bad when the dimensions of the system increase. Remember that subsequent servers observe cut workloads, whose heavy-tailed property is gradually destroyed. Thus, the heavy-tail of the DC-wide workload is progressively reduced as considering lower and lower priority servers. Under this condition, it is not recommended to schedule with LAS discipline, therefore intra-server demotion is a downside. Intuitively, since lower priority servers receive only jobs corresponding to high percentiles, long flows cause protracted starvation to each other, with the longest flows being the more penalized. \\
+As a side note, if the variability becomes so low, it would be even recommended to serve jobs with FIFO and not PS. As a trivial example of low variability, suppose to schedule two flows $f_1, f_2$ both of size 10 (bits/bytes/packets,...). Denote as $T(f_i)$ the average flow completion time of flow $i$, expressed in transmission slots. FIFO scheduling would give:
+\[
+	T_{FIFO}(f_1) = T_{FIFO}(f_2) = \dfrac{10+20}{2} = 15
+\]
+Instead, PS scheduling would be worse:
+\[
+T_{PS}(f_1) = T_{PS}(f_2) = \dfrac{19+20}{2} = 19.5
+\]
 \subsubsection{Flow synchronization}
 The second issue we have identified is flow synchronization. Consider the topology with $K$=5 and $N$=2. We plot the CDF of the flow inter-arrival time, that is the distribution of the time elapsed between two consecutive job arrivals. 
 \begin{figure}
@@ -350,11 +359,8 @@ We explain this synchronization as a joint result of processor sharing, strict p
 We think that this flow synchronization arises also in the system without spatial diversity and it is something not highlighted by authors of PIAS. Instead of showing at server level, we think that bursts arrivals could occur at priority queue level, especially when $N$ is large. However, since lower priority queues are served in strict priority only when high PQs are empty, we guess that these bursts are also less penalizing. \textcolor{red}{QUAL'ERA IL COMMENTO DI ANDREA ? CHE IN UNA RETE A PACCHETTO PROBABILMENTE NON SI VEDE COSI TANTO?? PERCHE' ? PERCHE' IL FLUSSO NON CE L'HAI TUTTO SUBITO MA LE TCP SOURCES TE LO MANDANO SEGMENTATO?}
 \subsection{Final comparison}
 \label{sec:final-comparison}
-In previous sections were undisclosed the effects of spatial diversity under different settings, in order to understand which is the best dimensioning of the system in terms of number of servers and priority queues. At the same time were highlighted two implications of spatial diversity on the performance of strict priority scheme with demotion. In this section we want to exploit the insights just gained and compare SD-MLFQ with the system without spatial diversity and ES-N threshold assignment. Ultimately, showing that the system with spatial diversity outperforms the other would be our final goal. \\
-As usual, we evaluated both FIFO and PS discipline and we show results for the Web search workload only. Results with FIFO are coherent with previous analysis. First, the benefits of spatial diversity on a FIFO system with MLFQ demotion are more remarked for increased dimensionality. Either an increase in the number of servers (Fig. \ref{fig:esn-vs-sdmlfq-fifo-fixed-N}) or an increase in the number of priorities (Fig. \ref{fig:esn-vs-sdmlfq-fifo-fixed-K}), offer to short flows a chance to get rid earlier of their wait behind long flows. For similar reasons SD-MLFQ achieves better performances in respect to ES-N for all considered combination of $K$ and $N$.
-% FIFO wins over PS (with ES-N it is not convenient to do FIFO)
-
-% In other words, the flow size distributions fed in low priority servers have reduced variability (Fig. \ref{fig:cdfs}). This is a clear downside for PS policy.
+In previous sections were undisclosed the effects of spatial diversity under different settings, in order to understand which is the best dimensioning of the system in terms of number of servers and priority queues. At the same time were highlighted two implications of spatial diversity on the performance of strict priority scheme with demotion. In this section we want to exploit the insights just gained and compare SD-MLFQ with the system without spatial diversity and ES-N threshold assignment. Ultimately, showing that the system with spatial diversity outperforms the other would be our final goal. As usual, we evaluated both FIFO and PS discipline and we show results for the Web search workload only. Whenever load balance thresholds are optimized, we labeled the algorithm as SD-MLFQ-OPT. Results with FIFO are coherent with previous analysis. \\
+First, the benefits of spatial diversity on a FIFO system with MLFQ demotion are more remarked for increased dimensionality. Either an increase in the number of servers (Fig. \ref{fig:esn-vs-sdmlfq-fifo-fixed-N}) or an increase in the number of priorities (Fig. \ref{fig:esn-vs-sdmlfq-fifo-fixed-K}), offer to short flows a chance to get rid earlier of their wait behind long flows. Additionally, FIFO does not suffer flow synchronization problem. For similar reasons SD-MLFQ achieves better performances in respect to ES-N for all considered combination of $K$ and $N$, making spatial diversity a very attractive solution for systems where FIFO at job level is a hard constraint.
 \begin{figure}
 	\centering
 	\captionsetup{width=.8\linewidth}
@@ -373,18 +379,81 @@ As usual, we evaluated both FIFO and PS discipline and we show results for the W
 	\end{subfigure}%
 	\caption{Comparison among SD-MLFQ and ES-N for web search workload and FIFO. Results plotted with 99\% confidence interval.}
 \end{figure}%
-Additionally, FIFO does not suffer flow synchronization problem.
-\begin{figure}
+On the contrary, the Processor Sharing discipline is less compatible with spatial diversity. Figure \ref{fig:esn-vs-sdmlfq-ps-fixed-N} depicts the comparison between SD-MLFQ and ES-N for fixed values of $N$ and variable $K$. In particular, only $N$=1 and $N$=2 have been considered because we have seen that with many priority queues per server and spatial diversity we incur in some impairments (\S \ref{sec:sd-impairments}). Nonetheless, results for fixed $K$ and varying $N$ at $\lambda = 0.9$ can be found in the summarizing Table \ref{tab:esn-vs-sdmlfq} and are coherent with our intuitions. The principal insights can be grasped from Figures \ref{fig:esn-vs-sdmlfq-ps-fixed-N-2}-Fig. \ref{fig:esn-vs-sdmlfq-ps-fixed-N-1}.  Unfortunately it is clear SD-MLFQ becomes rapidly worse than ES-N when $N \times K$ grows. Even for small dimensioning, such as $K \times N = 4$, ES-N is slightly better than SD-MLFQ.
+\begin{figure}[!tb]
 	\centering
-	\captionsetup{width=.8\linewidth}
-	\includegraphics[width=0.7\textwidth]{Chapter3/Figures/comparison_esn_vs_mlfq_ps_vs_servers}
-	\caption{Comparison among SD-MLFQ and ES-N for web search workload and FIFO. Results plotted with 99\% confidence interval.}
+%	\captionsetup{width=.8\linewidth}
+	\begin{subfigure}{.5\textwidth}								   
+		\includegraphics[width=0.99\textwidth]{Chapter3/Figures/comparison_esn_vs_mlfq_ps_vs_servers}
+		\caption{$N$=2}	
+		\label{fig:esn-vs-sdmlfq-ps-fixed-N-2}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}{.5\textwidth}			
+		\centering
+		\includegraphics[width=0.99\textwidth]{Chapter3/Figures/comparison_esn_vs_mlfq_ps_n11}
+		\caption{$N$=1}
+		\label{fig:esn-vs-sdmlfq-ps-fixed-N-1}
+	\end{subfigure}%
+	\caption{Comparison among SD-MLFQ and ES-N for web search workload and PS at 99\% confidence interval. For both figures the number of priorities $N$ is fixed.}	
+	\label{fig:esn-vs-sdmlfq-ps-fixed-N}
 \end{figure}%
+In the summarizing table is also present the detailed comparison for all considered scenarios both with optimized and proportionate split thresholds. The optimized load balance thresholds are very effective for the system without intra-server demotion, that is with a single queue. This comes at no surprise since in such a condition our intelligent load balancing is the only way to separate short and long flows. Indeed, for $N$=1 the SD-MLFQ-OPT wins also over ES-N (Fig.\ref{fig:esn-vs-sdmlfq-ps-fixed-N-1}), which randomly load balance flows on available servers, thus mixing flows of any size. The effect of optimal load balancing start to be less prevalent than the effect of priority queues for $N \ne 1$. When $N$=4 SD-MLFQ-OPT achieves worse performances than SD-MLFQ. 
+\begin{table}[]
+	\centering
+	\begin{tabular}{lllll}
+		\hline
+		\multicolumn{2}{l}{{\color[HTML]{000000} Scenario}} &
+		{\color[HTML]{000000} ES-N} &
+		{\color[HTML]{000000} SD-MLFQ-OPT} &
+		{\color[HTML]{000000} SD-MLFQ} \\ \hline
+		{\color[HTML]{000000} } &
+		{\color[HTML]{000000} K=3} &
+		{\color[HTML]{000000} 9.12} &
+		{\color[HTML]{000000} 6.61} &
+		{\color[HTML]{000000} 9.59} \\
+		{\color[HTML]{000000} } &
+		{\color[HTML]{000000} K=5} &
+		{\color[HTML]{000000} 9.37} &
+		{\color[HTML]{000000} 6.36} &
+		{\color[HTML]{000000} 9.71} \\
+		\multirow{-3}{*}{{\color[HTML]{000000} N=1}} &
+		{\color[HTML]{000000} K=9} &
+		{\color[HTML]{000000} 8.77} &
+		{\color[HTML]{000000} 8.26} &
+		{\color[HTML]{000000} 10.12} \\ \hline
+		{\color[HTML]{000000} } &
+		{\color[HTML]{000000} K=3} &
+		{\color[HTML]{000000} 4.20} &
+		{\color[HTML]{000000} 4.62} &
+		{\color[HTML]{000000} 5.52} \\
+		{\color[HTML]{000000} } &
+		{\color[HTML]{000000} K=5} &
+		{\color[HTML]{000000} 4.32} &
+		{\color[HTML]{000000} 7.67} &
+		{\color[HTML]{000000} 7.95} \\
+		\multirow{-3}{*}{{\color[HTML]{000000} N=2}} &
+		{\color[HTML]{000000} K=9} &
+		{\color[HTML]{000000} 4.08} &
+		{\color[HTML]{000000} 13.41} &
+		{\color[HTML]{000000} 14.59} \\ \hline
+		{\color[HTML]{000000} } &
+		{\color[HTML]{000000} K=3} &
+		{\color[HTML]{000000} 2.64} &
+		{\color[HTML]{000000} 4.87} &
+		{\color[HTML]{000000} 5.34} \\
+		{\color[HTML]{000000} } &
+		{\color[HTML]{000000} K=5} &
+		{\color[HTML]{000000} 2.70} &
+		{\color[HTML]{000000} 14.76} &
+		{\color[HTML]{000000} 13.09} \\
+		\multirow{-3}{*}{{\color[HTML]{000000} N=4}} &
+		{\color[HTML]{000000} K=9} &
+		{\color[HTML]{000000} 2.57} &
+		{\color[HTML]{000000} 13.29} &
+		{\color[HTML]{000000} 11.56} \\ \cline{1-5} 
+	\end{tabular}
+	\caption{Summary of the comparison for PS discipline and $\lambda$=0.9}
+	\label{tab:esn-vs-sdmlfq}
+\end{table}
 
-\begin{figure}
-	\centering
-	\captionsetup{width=.8\linewidth}
-	\includegraphics[width=0.7\textwidth]{Chapter3/Figures/comparison_esn_vs_mlfq_ps_n11}
-	\caption{Comparison among SD-MLFQ and ES-N for web search workload. Results plotted with 99\% confidence interval.}
-\end{figure}%
-%\textcolor{red}{Final comparison with ES-N (no spatial). Show plots and resume table}.

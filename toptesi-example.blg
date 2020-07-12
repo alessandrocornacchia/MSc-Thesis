@@ -16,45 +16,45 @@ Warning--to sort, need author or key in omnetpp
 Warning--to sort, need author or key in inet
 Warning--to sort, need author or key in ipecn
 Warning--to sort, need author or key in synecn
-You've used 20 entries,
+You've used 22 entries,
             2118 wiz_defined-function locations,
-            630 strings with 7857 characters,
-and the built_in function-call counts, 7610 in all, are:
-= -- 752
-> -- 366
-< -- 8
-+ -- 150
-- -- 126
-* -- 507
-:= -- 1173
-add.period$ -- 61
-call.type$ -- 20
-change.case$ -- 122
+            641 strings with 8307 characters,
+and the built_in function-call counts, 8526 in all, are:
+= -- 832
+> -- 422
+< -- 10
++ -- 172
+- -- 146
+* -- 571
+:= -- 1317
+add.period$ -- 67
+call.type$ -- 22
+change.case$ -- 138
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 313
-empty$ -- 580
-format.name$ -- 126
-if$ -- 1669
+cite$ -- 26
+duplicate$ -- 351
+empty$ -- 650
+format.name$ -- 146
+if$ -- 1871
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 16
-newline$ -- 99
-num.names$ -- 34
-pop$ -- 141
+int.to.str$ -- 22
+missing$ -- 18
+newline$ -- 109
+num.names$ -- 38
+pop$ -- 163
 preamble$ -- 1
-purify$ -- 102
+purify$ -- 116
 quote$ -- 0
-skip$ -- 271
+skip$ -- 299
 stack$ -- 0
-substring$ -- 431
-swap$ -- 114
-text.length$ -- 8
+substring$ -- 465
+swap$ -- 128
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 80
+type$ -- 88
 warning$ -- 4
-while$ -- 52
-width$ -- 22
-write$ -- 218
+while$ -- 60
+width$ -- 24
+write$ -- 240
 (There were 4 warnings)

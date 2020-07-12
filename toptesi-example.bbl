@@ -89,6 +89,13 @@ J.~{Kennedy} and R.~{Eberhart}.
 \newblock In {\em Proceedings of ICNN'95 - International Conference on Neural
   Networks}, volume~4, pages 1942--1948 vol.4, 1995.
 
+\bibitem{one-more-queue}
+Y.~{Lu}, G.~{Chen}, L.~{Luo}, K.~{Tan}, Y.~{Xiong}, X.~{Wang}, and E.~{Chen}.
+\newblock One more queue is enough: Minimizing flow completion time with
+  explicit priority notification.
+\newblock In {\em IEEE INFOCOM 2017 - IEEE Conference on Computer
+  Communications}, pages 1--9, 2017.
+
 \bibitem{LAS_analysis}
 Idris~A. Rai, Guillaume Urvoy-Keller, and Ernst~W. Biersack.
 \newblock Analysis of las scheduling for job size distributions with high
@@ -114,6 +121,13 @@ Y.~{Shi} and R.~{Eberhart}.
 \newblock In {\em 1998 IEEE International Conference on Evolutionary
   Computation Proceedings. IEEE World Congress on Computational Intelligence
   (Cat. No.98TH8360)}, pages 69--73, 1998.
+
+\bibitem{nos2}
+G.~{Sviridov}, A.~{Bianco}, and P.~{Giaccone}.
+\newblock Low-complexity flow scheduling for commodity switches in data center
+  networks.
+\newblock In {\em 2019 IEEE Global Communications Conference (GLOBECOM)}, pages
+  1--6, 2019.
 
 \bibitem{basinhoppin}
 David~J Wales and Jonathan~PK Doye.
