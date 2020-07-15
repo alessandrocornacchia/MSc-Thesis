@@ -152,6 +152,7 @@ To the purpose of investigating the spatial diversity framework, it has been pre
 \subsection{Decouple load balance from sub-thresholds}
 \label{sec:decoupling}
 \subsubsection{Optimize load balance thresholds}
+\label{sec:optimal-lb-problem}
 For the first phase turns out again to be useful the stochastic queuing model of MLFQ as provided in PIAS. (Sec.\ref{sec:pias-queueing-model}-Fig.\ref{fig:pias_scheme}). Each server is equipped with a single priority queue per port, therefore the optimal load balance problem can be abstracted with exactly the same model, where each queue in the tandem maps a server. After all, in this case priority queues are physically distributed to different servers, instead of being part of the same interface. They are independent on each other and the strict priority scheduler is no more involved, as they work in parallel without coordination. Practically, the only modification is to the queues capacities $\mu_i$. Remember that in the aforementioned MLFQ model the strict priority scheduler was described by attenuating the PQ serving rates $\mu_i = \mu\prod_{i}(1-\rho_i)$ for increasing $i$. Because of servers work in parallel without scheduling, this expression is not needed anymore and the draining rates just coincide to the same value:
 \[
 \mu_i = \mu \mslash K, \qquad i=1,..,K

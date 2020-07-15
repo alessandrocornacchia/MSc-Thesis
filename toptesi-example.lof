@@ -39,3 +39,7 @@
 \contentsline {figure}{\numberline {5.7}{\ignorespaces MLFQ with ES-N thresholds for different $N$ and $\rho $=0.9\relax }}{62}{figure.caption.57}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Optimal vs ECMP load balancing with TCP\relax }}{62}{figure.caption.59}
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Optimal vs ECMP load balancing with TCP\relax }}{63}{figure.caption.60}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Optimal vs ECMP load balancing with UDP\relax }}{64}{figure.caption.61}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces SD-MLFQ average nFCT for different $K$\relax }}{65}{figure.caption.63}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Final comparison among spatial diversity and other\relax }}{65}{figure.caption.64}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Average packet waiting time in PQs with and without spatial diversity for K=3 at 90\% load. On $x$-axis ToR \textit {up-send} interfaces and Spine \textit {down-send} interfaces.\relax }}{66}{figure.caption.65}

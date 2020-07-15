@@ -5,11 +5,11 @@
 \contentsline {chapter}{List of Figures}{iv}{chapter*.3}
 \contentsline {chapter}{Introduction}{1}{chapter*.4}
 \contentsline {chapter}{\numberline {1}Datacenter networks}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Interconnection network design}{4}{section.1.1}
-\contentsline {section}{\numberline {1.2}Traffic engineering}{5}{section.1.2}
+\contentsline {section}{\numberline {1.1}Interconnection network design}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Traffic engineering}{4}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}Traffic control objective: FCT}{5}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Traffic properties}{6}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Challenges in traffic control}{7}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.2}Traffic properties}{5}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Challenges in traffic control}{6}{subsection.1.2.3}
 \contentsline {chapter}{\numberline {2}Reducing FCT with flow prioritization}{9}{chapter.2}
 \contentsline {section}{\numberline {2.1}Theoretical scheduling background}{9}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Flow-aware disciplines}{9}{subsection.2.1.1}
@@ -61,5 +61,6 @@
 \contentsline {section}{\numberline {5.2}Result analysis}{59}{section.5.2}
 \contentsline {subsubsection}{Adversarial traffic distribution for MLFQ}{60}{section*.54}
 \contentsline {subsubsection}{Effects of priority queue granularity without spatial diversity}{61}{section*.56}
-\contentsline {subsubsection}{Optimal load balancing}{62}{section*.58}
-\contentsline {chapter}{Bibliography}{65}{chapter*.61}
+\contentsline {subsubsection}{Optimized load balancing}{62}{section*.58}
+\contentsline {subsubsection}{Performances of SD-MLFQ with priorities}{64}{section*.62}
+\contentsline {chapter}{Bibliography}{69}{chapter*.66}

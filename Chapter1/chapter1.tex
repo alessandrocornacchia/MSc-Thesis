@@ -1,20 +1,6 @@
-\label{ch1}
 \chapter{Datacenter networks}
-In the last decades,  with the spreading of cloud services accessible to anyone, computing has undergone a remarkable evolution. Encouraged by the astonishing growth of virtualization technologies in the IT industry, as well as the availability of storage and chips at ever-more modicum prices, over-the-top (OTT) players like Google, Amazon and Microsoft, have been building datacenter hotspots all around the world. Most of the applications any sector of modern society relies on, such as commercial and financial services, Web search, scientific computing, on-demand video streaming, recommendation systems, not to mention social networking and online gaming, more often than not run inside one of their datacenters' infrastructure. Indeed, from small enterprises to large corporations, it has been a common cost-saving strategy to offload, up to a certain extent, the deployment and operation of their own information systems to third parties, the cloud service providers. 
-% da dire meglio... voglio dire che diventano providers di servizi non loro
-After all, it is well-known in engineering, how much resource concentration enables better design and ease of mantainance.
-
-Among the major challenges posed by cloud computing paradigm, certainly there is the design of a huge communication network, hosting hundreds of thousands of servers, that is required to simultaneously provide high throughput and low-latency, while guaranteeing uninterruptible service continuity and lending itself to relentless expansion.
- The peculiar requirements of the datacenter environment and the lack of flexibility of traditional TCP/IP stack, have pushed the development % exploration
-  and adoption of unconventional approaches, such as centralized control and network softwarization (SDN),  laying the premises for a wider transformation process in the network industry. 
-In this sense, datacenters can be credited to having represented natural incubators for the evolution of telecommunication networks happening during the last few years. As a matter of fact, virtualization technologies and control plane programmability soon would have become disruptive innovations in networking ecosystem, that started to experience the same changes the IT world faced years before.
-%Pushed by datacenters' needs, the research community, both from industry and academia, started to work on innovative solutions that ...  
-As a result of this process, nowadays, ISPs are converting their infrastructure towards the same solutions, re-architecting PoPs as small-scaled modern datacenter, with massive employment of virtualization as regards network functions and devices (NFV). Similarly, the next generation mobile network, 5G, is going to base both its core and edge functions on the same paradigm, as revealed by its standardization and by the investments in multi-access edge computing (MEC).
-
-
+\label{ch1}
 % pervasive extensively widespread make use of massively plenty 
-
-
 %\section{Datacenter design and management principles}
 % dire che è semplice perchè unica entità amministrativa e single location
 \section{Interconnection network design}
@@ -59,7 +45,7 @@ reason behind popularity of Fat-Tree, other than its compatibility with main req
 
 \section{Traffic engineering}
 
-Large data centers represent a challenging environment for network designers. They host many thousands of servers running a myriad of applications belonging to tenants with heterogeneous QoS demands on a very physically circumscribed network. Data travel for no more than few hundreds meters with negligible propagation delays, through links of huge capacities up to 40Gbps. In such a context, the traditional TCP/IP protocol stack alone operates inefficiently, hence custom transport protocols, traffic control and traffic management techniques have been deployed. In this section will be first pointed out common objectives for network operations, then briefly reviewed the traffic characteristics and the subsequent issues they pose, in order to lay down the fundamentals of this work and justify the choices for traffic generation undertaken in its simulative part.
+Large data centers represent a challenging environment for network designers. They host many thousands of servers running a myriad of applications belonging to tenants with heterogeneous QoS demands on a very physically circumscribed network. Data travel for no more than few hundreds meters with negligible propagation delays, through links of huge capacities up to 40Gbps and beyond. In such a context, the traditional TCP/IP protocol stack alone operates inefficiently, hence custom transport protocols, traffic control and traffic management techniques have been deployed. In this section will be first pointed out common objectives for network operations, then briefly reviewed the traffic characteristics and the subsequent issues they pose, in order to lay down the fundamentals of this work and justify the choices for traffic generation undertaken in its simulative part.
 
 \subsection{Traffic control objective: FCT}
 There is unanimous consensus among data center providers in putting effort to minimize the \textit{Flow Completion Time} (FCT) metric, that is the all-up delay since when data are requested by a client application to the time they are at its disposal. The reason behind this interest is that latency directly impacts the quality of experience (QoE) as perceived by end users and ultimately operator revenues.  For interactive Web applications and online services, the responsiveness determines the number of users on the long run. Also, low-latency communication also enables flexible inter-rack deployment of micro-services across the network. Therefore, a common goal is to find efficient traffic control algorithms to handle latency sensitive flows, while maximizing network utilization which is also important for cost savings. Usually, different techniques are compared by measuring the \emph{average} flow completion time.\\
