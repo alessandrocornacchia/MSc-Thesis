@@ -1,6 +1,6 @@
 \chapter{Reducing FCT with flow prioritization}
 \label{ch:theoretical-scheduling-bg}
-To the purpose of minimizing the average flow completion time (FCT), a common strategy is to treat short flows with tight latency constraints differently from the others. This can be managed with prioritization and scheduling algorithms, for which there already exist numerous theoretical studies. In the following of this chapter will be reviewed the most significant of them, with care to their application to datacenter networks. 
+To the purpose of minimizing the average flow completion time (FCT), a common strategy is to treat short flows with tight latency constraints differently from the others. This can be managed with prioritization and scheduling algorithms, for which there already exist numerous theoretical studies. In the following of this chapter will be reviewed the most significant of them, with care to their application to datacenter networks \cite{dpp, 188942, pFabric, pias, one-more-queue, pdq}. 
 
 \section{Theoretical scheduling background}
 At high level, scheduling policies can be classified into two categories, depending whether or not flow properties --- such as size and deadline --- are known a priori.
@@ -126,7 +126,7 @@ Consequently, from the definition of $\theta_i$
 \]
 If the system is stable, the arrival rate of queue $i$ is nothing else than the output rate
 of queue $i-1$, weighted by the probability of remaining in the system. 
-Therefore: 
+Therefore:
 \[
 \lambda_i = \lambda_{i-1} (1-p_{i-1})
 \]
@@ -192,7 +192,7 @@ It holds:
 \end{table}
 
 Summarizing, it was possible to write down all arrival rates $\lambda_{i}$ and all draining rate $\mu_i$ as function of the flow size distribution and the set of thresholds $\alpha_i$. A summary of all quantities that have been defined is provided in Table \ref{tab:queuingmodel}.
-These parameters are sufficient to express the average sojourn time on a single link, so to characterize the performance of PIAS. The average sojourn time on queue $i$ which comprises the average waiting and serving time is given by the well-known formula for M/M/1 queues:
+These parameters are sufficient to express the average sojourn time on a single link, so to characterize the performance of PIAS. The average sojourn time on queue $i$ which comprises the average waiting and serving time is given by the well-known formula for M/M/1 queues \cite{klein-queuing-theory}:
 \begin{equation}
 \label{mm1}
 \mathbb{E}[T_i] = \dfrac{1}{\mu_i-\lambda_i}

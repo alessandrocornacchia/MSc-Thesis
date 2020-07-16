@@ -17,6 +17,11 @@ Inet framework.
 Omnet++. discrete event simulator.
 \newblock \url{https://omnetpp.org/}.
 
+\bibitem{dpp}
+{Troubleshooting QoS on N9K. Intelligent Buffering.}
+\newblock
+  \url{https://www.ciscolive.com/c/dam/r/ciscolive/us/docs/2019/pdf/CTHDCN-2301.pdf}.
+
 \bibitem{Gittins}
 Samuli Aalto, Urtzi Ayesta, and Rhonda Righter.
 \newblock On the gittins index in the m/g/1 queue.
@@ -50,6 +55,13 @@ Wei Bai, Li~Chen, Kai Chen, and Haitao Wu.
   Systems Design and Implementation}, NSDI’16, page 537–549, USA, 2016.
   USENIX Association.
 
+\bibitem{net-traffic-characteristics-benson}
+Theophilus Benson, Aditya Akella, and David~A. Maltz.
+\newblock Network traffic characteristics of data centers in the wild.
+\newblock In {\em Proceedings of the 10th ACM SIGCOMM Conference on Internet
+  Measurement}, IMC ’10, page 267–280, New York, NY, USA, 2010. Association
+  for Computing Machinery.
+
 \bibitem{burke}
 Paul~J. Burke.
 \newblock The output of a queuing system.
@@ -61,6 +73,11 @@ Mark~E. Crovella.
 \newblock In Dror~G. Feitelson and Larry Rudolph, editors, {\em Job Scheduling
   Strategies for Parallel Processing}, pages 1--10, Berlin, Heidelberg, 2001.
   Springer Berlin Heidelberg.
+
+\bibitem{MapReduce}
+Jeffrey Dean and Sanjay Ghemawat.
+\newblock Mapreduce: Simplified data processing on large clusters.
+\newblock {\em Commun. ACM}, 51(1):107–113, January 2008.
 
 \bibitem{ek1999ieee}
 Niclas Ek.
@@ -75,6 +92,14 @@ Albert Greenberg, James~R. Hamilton, Navendu Jain, Srikanth Kandula, Changhoon
   Communication}, SIGCOMM ’09, page 51–62, New York, NY, USA, 2009.
   Association for Computing Machinery.
 
+\bibitem{188942}
+Matthew~P. Grosvenor, Malte Schwarzkopf, Ionel Gog, Robert N.~M. Watson,
+  Andrew~W. Moore, Steven Hand, and Jon Crowcroft.
+\newblock Queues don{\textquoteright}t matter when you can {JUMP} them!
+\newblock In {\em 12th {USENIX} Symposium on Networked Systems Design and
+  Implementation ({NSDI} 15)}, pages 1--14, Oakland, CA, May 2015. {USENIX}
+  Association.
+
 \bibitem{rdma}
 Chuanxiong Guo, Haitao Wu, Zhong Deng, Gaurav Soni, Jianxi Ye, Jitu Padhye, and
   Marina Lipshteyn.
@@ -83,11 +108,24 @@ Chuanxiong Guo, Haitao Wu, Zhong Deng, Gaurav Soni, Jianxi Ye, Jitu Padhye, and
   ’16, page 202–215, New York, NY, USA, 2016. Association for Computing
   Machinery.
 
+\bibitem{pdq}
+Chi-Yao Hong, Matthew Caesar, and P.~Brighten Godfrey.
+\newblock Finishing flows quickly with preemptive scheduling.
+\newblock In {\em Proceedings of the ACM SIGCOMM 2012 Conference on
+  Applications, Technologies, Architectures, and Protocols for Computer
+  Communication}, SIGCOMM ’12, page 127–138, New York, NY, USA, 2012.
+  Association for Computing Machinery.
+
 \bibitem{pso}
 J.~{Kennedy} and R.~{Eberhart}.
 \newblock Particle swarm optimization.
 \newblock In {\em Proceedings of ICNN'95 - International Conference on Neural
   Networks}, volume~4, pages 1942--1948 vol.4, 1995.
+
+\bibitem{klein-queuing-theory}
+Leonard Kleinrock.
+\newblock {\em Theory, Volume 1, Queueing Systems}.
+\newblock Wiley-Interscience, USA, 1975.
 
 \bibitem{one-more-queue}
 Y.~{Lu}, G.~{Chen}, L.~{Luo}, K.~{Tan}, Y.~{Xiong}, X.~{Wang}, and E.~{Chen}.
@@ -121,6 +159,12 @@ Y.~{Shi} and R.~{Eberhart}.
 \newblock In {\em 1998 IEEE International Conference on Evolutionary
   Computation Proceedings. IEEE World Congress on Computational Intelligence
   (Cat. No.98TH8360)}, pages 69--73, 1998.
+
+\bibitem{hadoop}
+K.~{Shvachko}, H.~{Kuang}, S.~{Radia}, and R.~{Chansler}.
+\newblock The hadoop distributed file system.
+\newblock In {\em 2010 IEEE 26th Symposium on Mass Storage Systems and
+  Technologies (MSST)}, pages 1--10, 2010.
 
 \bibitem{nos2}
 G.~{Sviridov}, A.~{Bianco}, and P.~{Giaccone}.
