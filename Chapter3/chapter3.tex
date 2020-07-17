@@ -177,7 +177,6 @@ Subsequently the process is repeated by "hopping" to a different point and re-pe
 We consider BFGS as a local minimization algorithm, we set a step size equals to 100 for random perturbation as it was empirically found to be a good trade-off between convergence speed and accuracy.
 We then perform 300 iterations for each point in \textbf{figura con i load} on a Intel i7-7700k with 16GB of RAM.
 % dire python scipy solver
-% TODO citare basin hoppin e pso heuristics (some parameters used, bla bla)
 % TODO why complexity is higher at load 0.6 ???
 \section{Dimensioning spatial diversity}
 In the previous section it was laid down the basic framework of spatial diversity. It was remarked the fact that adopting spatial diversity translates into a priority-driven load balancing. At the same time were collected encouraging results about the effectiveness of the optimal load balancing. It was discussed the impact of two workloads commonly used as a benchmark in literature. Then, it was solved the optimal load balancing problem for up to $K$=9 parallel servers ans shown that for large topologies we may incur in overwhelming complexity. In all the simple experiments carried out, the servers were always configured with Processor Sharing service discipline and without priority queues.

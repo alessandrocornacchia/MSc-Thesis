@@ -130,8 +130,7 @@ Let the notation $\mu_i^j$ indicate the drain rate of the $i$-th queue in the $j
 \theta_i^j &= F(\alpha_i^j) - F(\alpha_{i-1}^j)	\\
 \mathbb{E}[T_i^j] &= \dfrac{1}{\mu_i^j - \lambda_i^j}
 \end{align*}
-The formulation is essentially the same but with an additional dimension that takes into account the existence of multiple servers. Every server is modeled as a tandem of $N$ queues, exactly as in PIAS. Then, there are $K$ of them in parallel. Also, we wrote an additional constraint Eq.\eqref{eq:overload-constr} that prevents overloading any spine 
-\textcolor{red}{(TODO: additional constraint is it really needed??? in case of overloading, sojourn times goes to infinity, so it is unlikely it is chosen as solution....)}. 
+The formulation is essentially the same but with an additional dimension that takes into account the existence of multiple servers. Every server is modeled as a tandem of $N$ queues, exactly as in PIAS. Then, there are $K$ of them in parallel. Also, we wrote an additional constraint Eq.\eqref{eq:overload-constr} that prevents overloading any spine.
 \begin{subequations}
 	\begin{align}
 	&\underset{\{\theta_i^j\}}{\text{min}} & \quad  & \mathcal{T} =	\sum_{j=1}^{K}\sum_{i=1}^{N} \theta_i^j \sum_{j=i}^{N}T^s_j 					\label{eq::costfunction-spatial} & \\
@@ -139,7 +138,6 @@ The formulation is essentially the same but with an additional dimension that ta
 	& & & \sum_{i=1}^{N} \theta_i^j = 1  \qquad \forall j \in [1,K] &  \\
 	& & & \sum_{i=1}^{N}  \lambda_i^j < \mu/K  \qquad \forall j \in [1,K] & \label{eq:overload-constr}
 	\end{align}
-	
 \end{subequations}
 This approach would provide optimal load balancing and at the same time would choose a set of sub-thresholds targeted on the optimal load balance thresholds. Notably, the optimal solution would never include load balance thresholds that lead to an unbalanced traffic distribution among the servers, because that would have an overkilling effect on the delays, which instead the problem tries to minimize. Despite being a clean analytical formulation, its complexity seems prohibitive. The basic model without spatial diversity yet was non-convex and presented products and ratios of variables (Sec. \ref{sec:pias-queueing-model}). Nonetheless, it is still tractable since the number of variables is typically bounded to the (low) number of PQs available in commodity switches. Instead, in the complete model the number of variables scales with the product $K \times N$, where $K$ is usually big for large-scale data centers. In the next chapter we will provide in more details the CPU-time spent by two well-known meta-heuristics solvers, specifically PSO \cite{pso,pso2} and Basin-Hoppin \cite{basinhoppin} before to converge. Anyway, if the time scale at which a solution could be found is excessively large, the system would be unable to react promptly to a sudden change of the flow size distribution. As a consequence, the system would operate for long using thresholds mismatched with respect to the flow distribution. Therefore, even finding an optimal solution once does not signify that this approach is feasible for a real datacenter scenario, where likely the solution must be computed repeatedly as statistics change. \\
 To the purpose of investigating the spatial diversity framework, it has been preferred to handle the two problems individually. The approach that has been carried out is decoupled in two sequential steps.
