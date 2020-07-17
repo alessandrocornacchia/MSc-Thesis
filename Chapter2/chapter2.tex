@@ -1,4 +1,4 @@
-\chapter{Reducing FCT with flow prioritization}
+\chapter{Reducing Flow Completion Time}
 \label{ch:theoretical-scheduling-bg}
 To the purpose of minimizing the average flow completion time (FCT), a common strategy is to treat short flows with tight latency constraints differently from the others. This can be managed with prioritization and scheduling algorithms, for which there already exist numerous theoretical studies. In the following of this chapter will be reviewed the most significant of them, with care to their application to datacenter networks \cite{dpp, 188942, pFabric, pias, one-more-queue, pdq}. 
 
@@ -44,8 +44,8 @@ The distributions taken into account were the negative exponential distribution,
 
 In short, the ideal scheduler is SRPT if detailed flow information are available at transport upon flow initiation, alternatively LAS is the best choice provided that flow sizes present high variability. Any practical design proposed in literature and revised in the following sections aim to approximate any of these targets.
 
-\section{State-of-the-art solutions in practical networks}
-Theoretical results, both for flow-aware and flow-agnostic scheduling disciplines, refer to a scenario with a single link and do not account at all for the implementation complexity. A major restraint of LAS and SRPT that limits their practical applicability are the fine-grained decisions they adopt for flow scheduling. To determine the next job to serve, it is required to mantain per-flow state information and perform comparisons among them at every packet transmission. These operations can be very complicated to implement at high line rates with thousands of simultaneous flows, as typically happens in DCNs. (Sec. \ref{traffic-properties}). Moreover, in a data center network many servers are connected through a multi-stage switching fabric (\ref{sec:topology}), which implies that, actually, from source to destination multiple links are traversed, hence optimizing local decisions does not ensure global optimality. As a trivial example, consider a situation with three server $s_1$, $s_2$ and $s_3$ and three flows $f_1:s_1 \longrightarrow s_2$, $f_2:s_1 \longrightarrow s_3$ and $f_3:s_2 \longrightarrow s_3$. With this setting $f_1$ competes against $f_2$ in the access interface of $s_1$, while $f_2$ competes with $f_3$ in the egress towards $s_3$. If a local scheduler in the outgoing interface of $s_1$ decide to serve $f_2$ before $f_1$, but a second independent scheduler in the last interface ahead of $s_3$ prioritize $f_3$ over $f_2$, the choice of the former scheduler would be vanished by the conflicting choice of the latter, because $f_2$ would delay $f_1$ despite being queued back $f_3$. Therefore, the optimal scheduling pattern could be achieved by means of a global network view. 
+\section{State-of-the-art implementations}
+Theoretical results, both for flow-aware and flow-agnostic scheduling disciplines, refer to a scenario with a single link and do not account at all for the implementation complexity. A major restraint of LAS and SRPT that limits their practical applicability are the fine-grained decisions they adopt for flow scheduling. To determine the next job to serve, it is required to mantain per-flow state information and perform comparisons among them at every packet transmission. These operations can be very complicated to implement at high line rates with thousands of simultaneous flows, as typically happens in DCNs. (Sec. \ref{sec:traffic-properties}). Moreover, in a data center network many servers are connected through a multi-stage switching fabric (\ref{sec:topology}), which implies that, actually, from source to destination multiple links are traversed, hence optimizing local decisions does not ensure global optimality. As a trivial example, consider a situation with three server $s_1$, $s_2$ and $s_3$ and three flows $f_1:s_1 \longrightarrow s_2$, $f_2:s_1 \longrightarrow s_3$ and $f_3:s_2 \longrightarrow s_3$. With this setting $f_1$ competes against $f_2$ in the access interface of $s_1$, while $f_2$ competes with $f_3$ in the egress towards $s_3$. If a local scheduler in the outgoing interface of $s_1$ decide to serve $f_2$ before $f_1$, but a second independent scheduler in the last interface ahead of $s_3$ prioritize $f_3$ over $f_2$, the choice of the former scheduler would be vanished by the conflicting choice of the latter, because $f_2$ would delay $f_1$ despite being queued back $f_3$. Therefore, the optimal scheduling pattern could be achieved by means of a global network view. 
 
 The state-of-the-art proposals that address these issues are pFabric \cite{pFabric} and PIAS \cite{pias}. They have been taken as the reference model of this work, which will try to extend their fundamental insights.  
 
@@ -71,11 +71,11 @@ At this point, pFabric showcased that it is possible to achieve nearly ideal per
  \subsubsection{Approximate optimality with priority queues}
 As already mentioned, implementing such a prioritization scheme on available commodity devices is very challenging and for sure would require hardware modifications. The interested reader could find a possible digital design in the paper of pFabric. The same source, however, provided also a straightforward solution readily deployable with current switches. The idea is to coarse the granularity of the scheduler by adopting only a finite number of priority levels. Then, packets with different priorities are enqueued in corresponding priority queues (PQs) and handled with traditional network schedulers (SP, WRR, WFQ, etc.). In pFabric it is employed a Strict Priority (SP) scheduler, but in general other choices are not precluded \cite{mqecn}. In short, LAS and SRPT schedulers, as well as other disciplines, can be emulated by tagging packets with a priority label and leveraging separated queues in network interfaces. The typical number of priority queues available in datacenter switches ranges between 2 and 8, albeit it often occurs that some of them are reserved --- more details in Sec. \ref{sec:pias}. Of course, increasing the number of PQs results in better approximation of the ideal scheduling, that implicitly would correspond to having an infinite number of PQs. In fact, the ideal scheduler directly compares each other all priorities of the packets in the buffer.
 
-Finally, the FCT gain obtained with this system largely depends on the way flows are clustered in priority levels. This underlies the need of a careful tuning of a set of thresholds which split packets among the priorities available. A dedicated section of this work illustrates some criterion to choose them (\S \ref{sec:thresholds}). 
+Finally, the FCT gain obtained with this system largely depends on the way flows are clustered in priority levels. This underlies the need of a careful tuning of a set of thresholds which split packets among the priorities available. A dedicated section of this work illustrates some criterion to choose them (\S \ref{sec:pias-queueing-model}). 
 
 \end{subsection}
 
-\begin{subsection}{PIAS: the reference model}
+\begin{subsection}{PIAS: reference size-agnostic architecture}
 	\label{sec:pias}
 	The next step with respect to pFabric as well as the starting point of this work is PIAS: Practical Information-Agnostic Scheduler \cite{pias}. This proposal is the first which addresses the scheduling problem without the assumption of an exact prior knowledge about the flow size. Instead, PIAS tries to mimic a LAS scheduler exploiting the sole knowledge of the distribution of flow sizes rather than their precise values. Surprisingly, when compared to pFabric it delivers very similar performances for short flows, that are the more critical ones (the gap is within 4.9\%). At the same time, however, PIAS preserves ease of deployment with the current switch hardware and the standard distributed congestion-control algorithms.
 	Summarizing, the two main design principles of PIAS are:
@@ -97,12 +97,12 @@ Finally, the FCT gain obtained with this system largely depends on the way flows
 A key point for this kind of systems is how to choose the demotion thresholds. In fact, especially when few queues are available, an unbalanced threshold setting may lead to severe performance degradation. On one hand, thresholds too small cause premature flow demotion and delays for short flows that get mixed with long flows, on the other hand if the thresholds are too large, medium and elephant flows overstay in high priorities, resulting again in worse FCT for delay sensitive flows. The next section will present simple heuristics and a more refined optimization to find the set of thresholds.
 \end{subsection}
 
-\section{The problem of demotion thresholds}
+\section{Setting demotion thresholds}
 The same authors of PIAS proposed a queueing model to mathematically describe the dynamics of the system. It has to be remarked that the queueing model captures only the average flow completion time on a single interface. Therefore, it is assumed that the flow size distribution is homogeneous over the datacenter fabric so that bottleneck links observe all the same distribution. With this assumption, the average FCT over the whole fabric is just a linear rescaling of the average FCT on a single link, therefore the performance index of any set of thresholds obtained with the model is meaningful for the whole DCN as well. 
 
 In the following of this section, first it is formalized the queueing model along with its parameters, then it is formulated a non-linear minimization problem that can be used to optimize demotion thresholds. Finally, two other trivial heuristics for threshold assignment are reviewed.
 
-\subsection{Stochastic queueing model}
+\subsection{An analytical model}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{Chapter2/Figures/pias}
@@ -223,7 +223,7 @@ Hence, it is possible to solve in $\theta_i$.
 \end{aligned}
 \end{equation}
 
-\subsection{Greedy threshold assignment}
+\subsection{Greedy thresholds}
 \label{sec:greedy-thresh}
 In order to verify the actual gain obtained with optimal demotion levels, it is practical to compare it against simpler greedy strategies for thresholds assignment. Two intuitive approach are considered for fast threshold computation: Equal Split (ES) and Load Split (LS). 
 %Therefore, for initial tests, it has been more practical to use a simpler criterion: assign thresholds so that the traffic load is equally distributed among available queues. \\
