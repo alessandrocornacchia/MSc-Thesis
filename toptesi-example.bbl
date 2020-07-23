@@ -1,93 +1,124 @@
 \begin{thebibliography}{10}
 
 \bibitem{synecn}
-{Adding Explicit Congestion Notification (ECN) Capability to TCP's SYN/ACK
-  Packets}.
+{Adding Explicit Congestion Notification (ECN) capability to TCP's SYN/ACK
+  packets}.
 \newblock \url{https://www.rfc-editor.org/rfc/rfc5562}.
 
-\bibitem{ipecn}
-The addition of explicit congestion notification (ecn) to ip.
-\newblock \url{https://tools.ietf.org/html/rfc3168}.
-
 \bibitem{inet}
-Inet framework.
+{INET framework}.
 \newblock \url{https://inet.omnetpp.org/}.
 
 \bibitem{omnetpp}
-Omnet++. discrete event simulator.
+{OMNeT++. Discrete Event simulator}.
 \newblock \url{https://omnetpp.org/}.
 
+\bibitem{scipy}
+{SciPy}.
+\newblock \url{https://www.scipy.org/}.
+
+\bibitem{ipecn}
+{The addition of Explicit Congestion Notification (ECN) to IP}.
+\newblock \url{https://tools.ietf.org/html/rfc3168}.
+
 \bibitem{dpp}
-{Troubleshooting QoS on N9K. Intelligent Buffering.}
+{Troubleshooting QoS on N9K. Intelligent buffering.}
 \newblock
   \url{https://www.ciscolive.com/c/dam/r/ciscolive/us/docs/2019/pdf/CTHDCN-2301.pdf}.
 
 \bibitem{Gittins}
 Samuli Aalto, Urtzi Ayesta, and Rhonda Righter.
-\newblock On the gittins index in the m/g/1 queue.
+\newblock {On the Gittins index in the M/G/1 queue}.
 \newblock {\em Queueing Systems}, 63(1-4):437–458, 2009.
 
 \bibitem{dctcp}
 Mohammad Alizadeh, Albert Greenberg, David~A. Maltz, Jitendra Padhye, Parveen
   Patel, Balaji Prabhakar, Sudipta Sengupta, and Murari Sridharan.
-\newblock Data center tcp (dctcp).
+\newblock {Data Center TCP (DCTCP)}.
 \newblock In {\em Proceedings of the ACM SIGCOMM 2010 Conference}, SIGCOMM
   ’10, page 63–74, New York, NY, USA, 2010. Association for Computing
   Machinery.
 
+\bibitem{hull}
+Mohammad Alizadeh, Abdul Kabbani, Tom Edsall, Balaji Prabhakar, Amin Vahdat,
+  and Masato Yasuda.
+\newblock {Less is more: trading a little bandwidth for ultra-low latency in
+  the data center}.
+\newblock In {\em Presented as part of the 9th $\{$USENIX$\}$ Symposium on
+  Networked Systems Design and Implementation ($\{$NSDI$\}$ 12)}, pages
+  253--266, 2012.
+
 \bibitem{pFabric}
 Mohammad Alizadeh, Shuang Yang, Milad Sharif, Sachin Katti, Nick Mckeown,
   Balaji Prabhakar, and Scott Shenker.
-\newblock pfabric.
+\newblock {pFabric}.
 \newblock {\em Proceedings of the ACM SIGCOMM 2013 conference on SIGCOMM -
   SIGCOMM 13}, 2013.
 
 \bibitem{pias}
 Wei Bai, Li~Chen, Kai Chen, Dongsu Han, Chen Tian, and Hao Wang.
-\newblock Pias: Practical information-agnostic flow scheduling for commodity
-  data centers.
+\newblock {PIAS: Practical Information-Agnostic Flow Scheduling for commodity
+  data centers}.
 \newblock {\em IEEE/ACM Transactions on Networking}, 25(4):1954–1967, 2017.
 
 \bibitem{mqecn}
 Wei Bai, Li~Chen, Kai Chen, and Haitao Wu.
-\newblock Enabling ecn in multi-service multi-queue data centers.
+\newblock {Enabling ECN in multi-service multi-queue data centers}.
 \newblock In {\em Proceedings of the 13th Usenix Conference on Networked
   Systems Design and Implementation}, NSDI’16, page 537–549, USA, 2016.
   USENIX Association.
 
+\bibitem{need-for-pacing}
+Neda Beheshti, Yashar Ganjali, Monia Ghobadi, Nick McKeown, and Geoff Salmon.
+\newblock {Experimental study of router buffer sizing}.
+\newblock In {\em Proceedings of the 8th ACM SIGCOMM conference on Internet
+  measurement}, pages 197--210, 2008.
+
 \bibitem{net-traffic-characteristics-benson}
 Theophilus Benson, Aditya Akella, and David~A. Maltz.
-\newblock Network traffic characteristics of data centers in the wild.
+\newblock {Network traffic characteristics of data centers in the wild}.
 \newblock In {\em Proceedings of the 10th ACM SIGCOMM Conference on Internet
   Measurement}, IMC ’10, page 267–280, New York, NY, USA, 2010. Association
   for Computing Machinery.
 
 \bibitem{burke}
 Paul~J. Burke.
-\newblock The output of a queuing system.
+\newblock {The output of a queuing system}.
 \newblock {\em Operations Research}, 4(6):699--704, 1956.
+
+\bibitem{tcp-incast-collapse}
+Yanpei Chen, Rean Griffith, Junda Liu, Randy~H Katz, and Anthony~D Joseph.
+\newblock {Understanding TCP incast throughput collapse in datacenter
+  networks}.
+\newblock In {\em Proceedings of the 1st ACM workshop on Research on enterprise
+  networking}, pages 73--82, 2009.
 
 \bibitem{mwf}
 Mark~E. Crovella.
-\newblock Performance evaluation with heavy tailed distributions.
+\newblock {Performance evaluation with heavy tailed distributions}.
 \newblock In Dror~G. Feitelson and Larry Rudolph, editors, {\em Job Scheduling
   Strategies for Parallel Processing}, pages 1--10, Berlin, Heidelberg, 2001.
   Springer Berlin Heidelberg.
 
 \bibitem{MapReduce}
 Jeffrey Dean and Sanjay Ghemawat.
-\newblock Mapreduce: Simplified data processing on large clusters.
+\newblock {MapReduce: simplified data processing on large clusters}.
 \newblock {\em Commun. ACM}, 51(1):107–113, January 2008.
+
+\bibitem{image-leaf-spine}
+D.G. Dutt.
+\newblock {\em BGP in the data center}.
+\newblock O'Reilly Media, 2017.
 
 \bibitem{ek1999ieee}
 Niclas Ek.
-\newblock Ieee 802.1 p, q-qos on the mac level.
+\newblock {IEEE 802.1 P, Q-QoS on the MAC level}.
 \newblock {\em Apr}, 24:0003--0006, 1999.
 
 \bibitem{vl2}
 Albert Greenberg, James~R. Hamilton, Navendu Jain, Srikanth Kandula, Changhoon
   Kim, Parantap Lahiri, David~A. Maltz, Parveen Patel, and Sudipta Sengupta.
-\newblock Vl2: A scalable and flexible data center network.
+\newblock {VL2: a scalable and flexible data center network}.
 \newblock In {\em Proceedings of the ACM SIGCOMM 2009 Conference on Data
   Communication}, SIGCOMM ’09, page 51–62, New York, NY, USA, 2009.
   Association for Computing Machinery.
@@ -95,7 +126,7 @@ Albert Greenberg, James~R. Hamilton, Navendu Jain, Srikanth Kandula, Changhoon
 \bibitem{188942}
 Matthew~P. Grosvenor, Malte Schwarzkopf, Ionel Gog, Robert N.~M. Watson,
   Andrew~W. Moore, Steven Hand, and Jon Crowcroft.
-\newblock Queues don{\textquoteright}t matter when you can {JUMP} them!
+\newblock {Queues don{\textquoteright}t matter when you can {JUMP} them!}
 \newblock In {\em 12th {USENIX} Symposium on Networked Systems Design and
   Implementation ({NSDI} 15)}, pages 1--14, Oakland, CA, May 2015. {USENIX}
   Association.
@@ -103,14 +134,14 @@ Matthew~P. Grosvenor, Malte Schwarzkopf, Ionel Gog, Robert N.~M. Watson,
 \bibitem{rdma}
 Chuanxiong Guo, Haitao Wu, Zhong Deng, Gaurav Soni, Jianxi Ye, Jitu Padhye, and
   Marina Lipshteyn.
-\newblock Rdma over commodity ethernet at scale.
+\newblock {RDMA over commodity Ethernet at scale}.
 \newblock In {\em Proceedings of the 2016 ACM SIGCOMM Conference}, SIGCOMM
   ’16, page 202–215, New York, NY, USA, 2016. Association for Computing
   Machinery.
 
 \bibitem{pdq}
 Chi-Yao Hong, Matthew Caesar, and P.~Brighten Godfrey.
-\newblock Finishing flows quickly with preemptive scheduling.
+\newblock {Finishing flows quickly with preemptive scheduling}.
 \newblock In {\em Proceedings of the ACM SIGCOMM 2012 Conference on
   Applications, Technologies, Architectures, and Protocols for Computer
   Communication}, SIGCOMM ’12, page 127–138, New York, NY, USA, 2012.
@@ -118,51 +149,63 @@ Chi-Yao Hong, Matthew Caesar, and P.~Brighten Godfrey.
 
 \bibitem{pso}
 J.~{Kennedy} and R.~{Eberhart}.
-\newblock Particle swarm optimization.
+\newblock {Particle swarm optimization}.
 \newblock In {\em Proceedings of ICNN'95 - International Conference on Neural
   Networks}, volume~4, pages 1942--1948 vol.4, 1995.
 
 \bibitem{klein-queuing-theory}
 Leonard Kleinrock.
-\newblock {\em Theory, Volume 1, Queueing Systems}.
+\newblock {\em {Theory, Volume 1, Queueing Systems}}.
 \newblock Wiley-Interscience, USA, 1975.
 
 \bibitem{one-more-queue}
 Y.~{Lu}, G.~{Chen}, L.~{Luo}, K.~{Tan}, Y.~{Xiong}, X.~{Wang}, and E.~{Chen}.
-\newblock One more queue is enough: Minimizing flow completion time with
-  explicit priority notification.
+\newblock {One more queue is enough: minimizing flow completion time with
+  explicit priority notification}.
 \newblock In {\em IEEE INFOCOM 2017 - IEEE Conference on Computer
   Communications}, pages 1--9, 2017.
 
+\bibitem{image-fat-tree}
+Zebin Lu, Junru Lei, Yihao He, Zhengfa Li, Shuhua Deng, and Xieping Gao.
+\newblock {Energy optimization for Software-Defined data center networks based
+  on flow allocation strategies}.
+\newblock {\em Electronics}, 8(9):1014, 2019.
+
+\bibitem{survey}
+Mohammad Noormohammadpour and Cauligi~S Raghavendra.
+\newblock {Datacenter traffic control: understanding techniques and tradeoffs}.
+\newblock {\em IEEE Communications Surveys \& Tutorials}, 20(2):1492--1525,
+  2017.
+
 \bibitem{LAS_analysis}
 Idris~A. Rai, Guillaume Urvoy-Keller, and Ernst~W. Biersack.
-\newblock Analysis of las scheduling for job size distributions with high
-  variance.
+\newblock {Analysis of LAS scheduling for job size distributions with high
+  variance}.
 \newblock {\em Proceedings of the 2003 ACM SIGMETRICS international conference
   on Measurement and modeling of computer systems - SIGMETRICS 03}, 2003.
 
 \bibitem{facebook_dcn}
 Arjun Roy, Hongyi Zeng, Jasmeet Bagga, George Porter, and Alex~C. Snoeren.
-\newblock Inside the social networks (datacenter) network.
+\newblock {Inside the social networks (Datacenter) Network}.
 \newblock {\em Proceedings of the 2015 ACM Conference on Special Interest Group
   on Data Communication - SIGCOMM 15}, 2015.
 
 \bibitem{schrage_1968}
 Linus Schrage.
-\newblock A proof of the optimality of the shortest remaining processing time
-  discipline.
+\newblock {A proof of the optimality of the Shortest Remaining Processing Time
+  discipline}.
 \newblock {\em Operations Research}, 16(3):687–690, 1968.
 
 \bibitem{pso2}
 Y.~{Shi} and R.~{Eberhart}.
-\newblock A modified particle swarm optimizer.
+\newblock {A modified particle swarm optimizer}.
 \newblock In {\em 1998 IEEE International Conference on Evolutionary
   Computation Proceedings. IEEE World Congress on Computational Intelligence
   (Cat. No.98TH8360)}, pages 69--73, 1998.
 
 \bibitem{hadoop}
 K.~{Shvachko}, H.~{Kuang}, S.~{Radia}, and R.~{Chansler}.
-\newblock The hadoop distributed file system.
+\newblock {The Hadoop distributed file system}.
 \newblock In {\em 2010 IEEE 26th Symposium on Mass Storage Systems and
   Technologies (MSST)}, pages 1--10, 2010.
 
@@ -171,21 +214,26 @@ Arjun Singh, Joon Ong, Amit Agarwal, Glen Anderson, Ashby Armistead, Roy
   Bannon, Seb Boving, Gaurav Desai, Bob Felderman, Paulie Germano, Anand
   Kanagala, Jeff Provost, Jason Simmons, Eiichi Tanda, Jim Wanderer, Urs
   Hölzle, Stephen Stuart, and Amin Vahdat.
-\newblock Jupiter rising: A decade of clos topologies and centralized control
-  in google’s datacenter network.
+\newblock {Jupiter rising: a decade of Clos topologies and centralized control
+  in Google’s datacenter network}.
 \newblock In {\em Sigcomm '15}, 2015.
 
 \bibitem{nos2}
 G.~{Sviridov}, A.~{Bianco}, and P.~{Giaccone}.
-\newblock Low-complexity flow scheduling for commodity switches in data center
-  networks.
+\newblock {Low-complexity flow scheduling for commodity switches in data center
+  networks}.
 \newblock In {\em 2019 IEEE Global Communications Conference (GLOBECOM)}, pages
   1--6, 2019.
 
 \bibitem{basinhoppin}
 David~J Wales and Jonathan~PK Doye.
-\newblock Global optimization by basin-hopping and the lowest energy structures
-  of lennard-jones clusters containing up to 110 atoms.
+\newblock {Global optimization by Basin-Hopping and the lowest energy
+  structures of Lennard-Jones clusters containing up to 110 atoms}.
 \newblock {\em The Journal of Physical Chemistry A}, 101(28):5111--5116, 1997.
+
+\bibitem{optimal-tail-scheduling}
+Adam Wierman and Bert Zwart.
+\newblock {Is tail-optimal scheduling possible?}
+\newblock {\em Oper. Res.}, 60(5):1249–1257, September 2012.
 
 \end{thebibliography}

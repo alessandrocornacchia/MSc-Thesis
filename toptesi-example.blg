@@ -13,50 +13,51 @@ A level-1 auxiliary file: Chapter4/chapter4.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: plain.bst
 Database file #1: biblio.bib
-Warning--to sort, need author or key in dpp
 Warning--to sort, need author or key in omnetpp
 Warning--to sort, need author or key in inet
+Warning--to sort, need author or key in dpp
+Warning--to sort, need author or key in scipy
 Warning--to sort, need author or key in ipecn
 Warning--to sort, need author or key in synecn
-You've used 30 entries,
+You've used 38 entries,
             2118 wiz_defined-function locations,
-            687 strings with 10109 characters,
-and the built_in function-call counts, 12044 in all, are:
-= -- 1168
-> -- 633
-< -- 14
-+ -- 257
-- -- 222
-* -- 815
-:= -- 1863
-add.period$ -- 93
-call.type$ -- 30
-change.case$ -- 199
+            734 strings with 11661 characters,
+and the built_in function-call counts, 15159 in all, are:
+= -- 1466
+> -- 789
+< -- 17
++ -- 314
+- -- 276
+* -- 1039
+:= -- 2348
+add.period$ -- 116
+call.type$ -- 38
+change.case$ -- 249
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 499
-empty$ -- 894
-format.name$ -- 222
-if$ -- 2640
+cite$ -- 44
+duplicate$ -- 618
+empty$ -- 1143
+format.name$ -- 276
+if$ -- 3310
 int.to.chr$ -- 0
-int.to.str$ -- 30
-missing$ -- 26
-newline$ -- 148
-num.names$ -- 52
-pop$ -- 242
+int.to.str$ -- 38
+missing$ -- 34
+newline$ -- 187
+num.names$ -- 66
+pop$ -- 305
 preamble$ -- 1
-purify$ -- 170
+purify$ -- 213
 quote$ -- 0
-skip$ -- 420
+skip$ -- 514
 stack$ -- 0
-substring$ -- 603
-swap$ -- 186
-text.length$ -- 14
+substring$ -- 802
+swap$ -- 222
+text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 118
-warning$ -- 5
-while$ -- 82
-width$ -- 32
-write$ -- 331
-(There were 5 warnings)
+type$ -- 148
+warning$ -- 6
+while$ -- 109
+width$ -- 40
+write$ -- 414
+(There were 6 warnings)
